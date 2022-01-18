@@ -6,7 +6,9 @@ resource "azurerm_key_vault" "this" {
   resource_group_name         = var.resource_group_name
   enabled_for_disk_encryption = true
   tenant_id                   = data.azurerm_client_config.this.tenant_id
-  purge_protection_enabled    = false
+
+  soft_delete_retention_days = 90
+  purge_protection_enabled   = false
 
   sku_name = "standard"
 }

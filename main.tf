@@ -1,14 +1,19 @@
 data "azurerm_client_config" "this" {}
 
 resource "azurerm_key_vault" "this" {
-  name                        = var.name
-  location                    = var.location
-  resource_group_name         = var.resource_group_name
-  enabled_for_disk_encryption = true
-  tenant_id                   = data.azurerm_client_config.this.tenant_id
-  purge_protection_enabled    = false
+  name                = var.name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  sku_name            = "standard"
+  tenant_id           = data.azurerm_client_config.this.tenant_id
 
-  sku_name = "standard"
+  soft_delete_retention_days = 90
+  purge_protection_enabled   = false
+
+  enabled_for_deployment          = false
+  enabled_for_disk_encryption     = false
+  enabled_for_template_deployment = false
+  enable_rbac_authorization       = false
 }
 
 resource "azurerm_key_vault_access_policy" "this" {
@@ -16,7 +21,7 @@ resource "azurerm_key_vault_access_policy" "this" {
   tenant_id    = data.azurerm_client_config.this.tenant_id
   object_id    = data.azurerm_client_config.this.object_id
 
-  secret_permissions = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
+  secret_permissions = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore", "Purge"]
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

@@ -21,7 +21,9 @@ resource "azurerm_key_vault_access_policy" "this" {
   tenant_id    = data.azurerm_client_config.this.tenant_id
   object_id    = data.azurerm_client_config.this.object_id
 
-  secret_permissions = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore", "Purge"]
+  certificate_permissions = var.client_permissions.certificates
+  key_permissions         = var.client_permissions.keys
+  secret_permissions      = var.client_permissions.secrets
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

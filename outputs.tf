@@ -7,6 +7,10 @@ output "key_vault_id" {
   ]
 }
 
+output "key_vault_name" {
+  value = azurerm_key_vault.this.name
+}
+
 output "monitor_diagnostic_setting_id" {
   value = azurerm_monitor_diagnostic_setting.this.id
 }

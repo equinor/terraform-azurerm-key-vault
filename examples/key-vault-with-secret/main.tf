@@ -1,10 +1,10 @@
+provider "azurerm" {
+  features {}
+}
+
 locals {
   app_name         = "ops-vault"
   environment_name = "example"
-}
-
-provider "azurerm" {
-  features {}
 }
 
 resource "azurerm_resource_group" "example" {
@@ -23,7 +23,8 @@ resource "azurerm_log_analytics_workspace" "example" {
 module "vault" {
   source = "../.."
 
-  name                       = "kv-${local.app_name}-${local.environment_name}"
+  app_name                   = local.app_name
+  environment_name           = local.environment_name
   location                   = azurerm_resource_group.example.location
   resource_group_name        = azurerm_resource_group.example.name
   log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id

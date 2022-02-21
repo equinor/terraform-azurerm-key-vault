@@ -1,7 +1,7 @@
 data "azurerm_client_config" "this" {}
 
 resource "azurerm_key_vault" "this" {
-  name                = var.name
+  name                = "kv-${var.app_name}-${var.environment_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "standard"

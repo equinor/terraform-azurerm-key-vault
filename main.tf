@@ -7,7 +7,6 @@ resource "azurerm_key_vault" "this" {
   sku_name            = "standard"
   tenant_id           = data.azurerm_client_config.this.tenant_id
 
-  soft_delete_enabled        = true
   soft_delete_retention_days = 90
   purge_protection_enabled   = false
 

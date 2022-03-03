@@ -28,6 +28,6 @@ variable "client_permissions" {
   default = {
     certificates = []
     keys         = []
-    secrets      = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore", "Purge"]
+    secrets      = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
   }
 }

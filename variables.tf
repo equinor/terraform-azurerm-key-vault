@@ -1,9 +1,11 @@
 variable "app_name" {
-  type = string
+  description = "Application name, used to generate resource names"
+  type        = string
 }
 
 variable "environment_name" {
-  type = string
+  description = "Environment name, used to generate resource names"
+  type        = string
 }
 
 variable "location" {
@@ -16,6 +18,12 @@ variable "resource_group_name" {
 
 variable "log_analytics_workspace_id" {
   type = string
+}
+
+variable "key_vault_name" {
+  description = "Key vault name, generated if not set"
+  type        = string
+  default     = null
 }
 
 variable "client_permissions" {

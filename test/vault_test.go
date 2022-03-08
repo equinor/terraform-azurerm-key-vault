@@ -15,3 +15,13 @@ func TestKeyVaultWithSecret(t *testing.T) {
 
 	terraform.InitAndApply(t, terraformOptions)
 }
+
+func TestKeyVaultWithCustomName(t *testing.T) {
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: "../examples/key-vault-with-custom-name",
+	})
+
+	defer terraform.Destroy(t, terraformOptions)
+
+	terraform.InitAndApply(t, terraformOptions)
+}

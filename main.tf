@@ -15,6 +15,8 @@ resource "azurerm_key_vault" "this" {
   enabled_for_template_deployment = false
 
   enable_rbac_authorization = false
+
+  tags = var.tags
 }
 
 resource "azurerm_key_vault_access_policy" "this" {

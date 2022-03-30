@@ -39,3 +39,9 @@ variable "client_permissions" {
     secrets      = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
   }
 }
+
+variable "tags" {
+  description = "A mapping of tags to assign to the resources"
+  type        = map(string)
+  default     = {}
+}

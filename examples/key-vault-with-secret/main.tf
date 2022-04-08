@@ -3,8 +3,8 @@ provider "azurerm" {
 }
 
 locals {
-  app_name         = "ops-vault"
-  environment_name = random_integer.this.result
+  application = "ops-vault"
+  environment = random_integer.this.result
 }
 
 resource "random_integer" "this" {
@@ -13,12 +13,12 @@ resource "random_integer" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = "rg-${local.app_name}-${local.environment_name}"
+  name     = "rg-${local.application}-${local.environment}"
   location = "northeurope"
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
-  name                = "log-${local.app_name}-${local.environment_name}"
+  name                = "log-${local.application}-${local.environment}"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   sku                 = "Free"
@@ -27,10 +27,12 @@ resource "azurerm_log_analytics_workspace" "this" {
 module "vault" {
   source = "../.."
 
-  app_name                   = local.app_name
-  environment_name           = local.environment_name
-  location                   = azurerm_resource_group.this.location
-  resource_group_name        = azurerm_resource_group.this.name
+  application = local.application
+  environment = local.environment
+
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 
   client_permissions = {

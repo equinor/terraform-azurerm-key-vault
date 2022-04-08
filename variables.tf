@@ -1,9 +1,9 @@
-variable "app_name" {
+variable "application" {
   description = "Application name, used to generate resource names"
   type        = string
 }
 
-variable "environment_name" {
+variable "environment" {
   description = "Environment name, used to generate resource names"
   type        = string
 }

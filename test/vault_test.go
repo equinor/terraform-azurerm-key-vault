@@ -8,11 +8,11 @@ import (
 )
 
 const application = "terratest"
-const environments = 1000
+const environments = 1000000
 
-func TestKeyVaultWithSecret(t *testing.T) {
+func TestBasicUsageExample(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../examples/key-vault-with-secret",
+		TerraformDir: "../examples/basic-usage",
 
 		Vars: map[string]interface{}{
 			"application": application,
@@ -25,9 +25,24 @@ func TestKeyVaultWithSecret(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 }
 
-func TestKeyVaultWithCustomName(t *testing.T) {
+func TestSecretExample(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../examples/key-vault-with-custom-name",
+		TerraformDir: "../examples/secret",
+
+		Vars: map[string]interface{}{
+			"application": application,
+			"environment": rand.Intn(environments),
+		},
+	})
+
+	defer terraform.Destroy(t, terraformOptions)
+
+	terraform.InitAndApply(t, terraformOptions)
+}
+
+func TestCustomNameExample(t *testing.T) {
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: "../examples/custom-name",
 
 		Vars: map[string]interface{}{
 			"application": application,

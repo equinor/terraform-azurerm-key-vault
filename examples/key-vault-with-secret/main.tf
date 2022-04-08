@@ -2,23 +2,13 @@ provider "azurerm" {
   features {}
 }
 
-locals {
-  application = "ops-vault"
-  environment = random_integer.this.result
-}
-
-resource "random_integer" "this" {
-  min = 0
-  max = 32767
-}
-
 resource "azurerm_resource_group" "this" {
-  name     = "rg-${local.application}-${local.environment}"
+  name     = "rg-${var.application}-${var.environment}"
   location = "northeurope"
 }
 
 resource "azurerm_log_analytics_workspace" "this" {
-  name                = "log-${local.application}-${local.environment}"
+  name                = "log-${var.application}-${var.environment}"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   sku                 = "Free"
@@ -27,8 +17,8 @@ resource "azurerm_log_analytics_workspace" "this" {
 module "vault" {
   source = "../.."
 
-  application = local.application
-  environment = local.environment
+  application = var.application
+  environment = var.environment
 
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name

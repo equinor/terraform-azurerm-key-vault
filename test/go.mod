@@ -1,4 +1,4 @@
-module github.com/equinor/terraform-azurerm-vault/test
+module vault
 
 go 1.18
 

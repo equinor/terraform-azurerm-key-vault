@@ -1,5 +1,6 @@
 output "key_vault_id" {
-  value = azurerm_key_vault.this.id
+  description = "The ID of the Key Vault."
+  value       = azurerm_key_vault.this.id
 
   depends_on = [
     # Client must have access to the key vault before managing secrets
@@ -8,13 +9,16 @@ output "key_vault_id" {
 }
 
 output "key_vault_name" {
-  value = azurerm_key_vault.this.name
+  description = "The name of the Key Vault."
+  value       = azurerm_key_vault.this.name
 }
 
 output "key_vault_uri" {
-  value = azurerm_key_vault.this.vault_uri
+  description = "The URI of the Key Vault, used for performing operations on keys and secrets."
+  value       = azurerm_key_vault.this.vault_uri
 }
 
 output "monitor_diagnostic_setting_id" {
-  value = azurerm_monitor_diagnostic_setting.this.id
+  description = "The ID of the Diagnostic Setting."
+  value       = azurerm_monitor_diagnostic_setting.this.id
 }

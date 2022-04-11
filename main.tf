@@ -1,11 +1,15 @@
-data "azurerm_client_config" "this" {}
+locals {
+  tags = merge({ application = var.application, environment = var.environment }, var.tags)
+}
+
+data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "this" {
-  name                = coalesce(var.key_vault_name, "kv-${var.app_name}-${var.environment_name}")
+  name                = coalesce(var.key_vault_name, "kv-${var.application}-${var.environment}")
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "standard"
-  tenant_id           = data.azurerm_client_config.this.tenant_id
+  tenant_id           = data.azurerm_client_config.current.tenant_id
 
   soft_delete_retention_days = 90
   purge_protection_enabled   = false
@@ -16,17 +20,17 @@ resource "azurerm_key_vault" "this" {
 
   enable_rbac_authorization = false
 
-  tags = var.tags
+  tags = local.tags
 }
 
 resource "azurerm_key_vault_access_policy" "this" {
   key_vault_id = azurerm_key_vault.this.id
-  tenant_id    = data.azurerm_client_config.this.tenant_id
-  object_id    = data.azurerm_client_config.this.object_id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
 
-  certificate_permissions = var.client_permissions.certificates
-  key_permissions         = var.client_permissions.keys
-  secret_permissions      = var.client_permissions.secrets
+  secret_permissions      = var.client_secret_permissions
+  certificate_permissions = var.client_certificate_permissions
+  key_permissions         = var.client_key_permissions
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

@@ -52,15 +52,3 @@ variable "log_analytics_workspace_id" {
   description = "Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent."
   type        = string
 }
-
-variable "secret_readers" {
-  description = "Specifies secret permissions for a Key Vault Access Policy"
-  type        = list(string)
-  default     = []
-}
-
-variable "secret_contributors" {
-  description = "Specifies secret permissions for a Key Vault Access Policy"
-  type        = list(string)
-  default     = []
-}

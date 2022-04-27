@@ -33,30 +33,6 @@ resource "azurerm_key_vault_access_policy" "this" {
   key_permissions         = var.client_key_permissions
 }
 
-resource "azurerm_key_vault_access_policy" "secret_readers" {
-  for_each = toset(var.secret_readers)
-
-  key_vault_id = azurerm_key_vault.this.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = each.value
-
-  secret_permissions      = ["Get", "List"]
-  certificate_permissions = []
-  key_permissions         = []
-}
-
-resource "azurerm_key_vault_access_policy" "secret_contributors" {
-  for_each = toset(var.secret_contributors)
-
-  key_vault_id = azurerm_key_vault.this.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = each.value
-
-  secret_permissions      = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
-  certificate_permissions = []
-  key_permissions         = []
-}
-
 resource "azurerm_monitor_diagnostic_setting" "this" {
   name                       = "${azurerm_key_vault.this.name}-logs"
   target_resource_id         = azurerm_key_vault.this.id

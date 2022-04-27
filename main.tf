@@ -52,7 +52,7 @@ resource "azurerm_key_vault_access_policy" "secret_contributors" {
   tenant_id    = data.azurerm_client_config.current.tenant_id
   object_id    = each.value
 
-  secret_permissions      = ["Get", "List"]
+  secret_permissions      = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
   certificate_permissions = []
   key_permissions         = []
 }

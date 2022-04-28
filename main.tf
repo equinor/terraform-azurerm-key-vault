@@ -31,6 +31,7 @@ resource "azurerm_key_vault_access_policy" "this" {
   secret_permissions      = var.client_secret_permissions
   certificate_permissions = var.client_certificate_permissions
   key_permissions         = var.client_key_permissions
+  storage_permissions     = []
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
@@ -43,6 +44,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     enabled  = true
 
     retention_policy {
+      days    = 0
       enabled = false
     }
   }
@@ -52,6 +54,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     enabled  = false
 
     retention_policy {
+      days    = 0
       enabled = false
     }
   }
@@ -61,6 +64,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     enabled  = true
 
     retention_policy {
+      days    = 0
       enabled = false
     }
   }

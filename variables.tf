@@ -9,13 +9,13 @@ variable "environment" {
 }
 
 variable "key_vault_name" {
-  description = "Specifies the name of the Key Vault."
+  description = "A custom name for the Key Vault."
   type        = string
   default     = null
 }
 
 variable "location" {
-  description = "Specifies the supported Azure location where the resources exist."
+  description = "The supported Azure location where the resources exist."
   type        = string
 }
 
@@ -31,24 +31,24 @@ variable "tags" {
 }
 
 variable "client_secret_permissions" {
-  description = "List of secret permissions for the current Client."
+  description = "A list of Key Vault Secret permissions to assign to the current client."
   type        = list(string)
   default     = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore"]
 }
 
 variable "client_certificate_permissions" {
-  description = "List of certificate permissions for the current Client."
+  description = "A list of Key Vault Certificate permissions to assign to the current client."
   type        = list(string)
   default     = []
 }
 
 variable "client_key_permissions" {
-  description = "List of key permissions for the current Client."
+  description = "A list of Key Vault Key permissions to assign to the current client."
   type        = list(string)
   default     = []
 }
 
 variable "log_analytics_workspace_id" {
-  description = "Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent."
+  description = "The ID of the Log Analytics Workspace to send diagnostics to."
   type        = string
 }

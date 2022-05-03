@@ -21,6 +21,13 @@ resource "azurerm_key_vault" "this" {
   enable_rbac_authorization = false
 
   tags = local.tags
+
+  network_acls {
+    bypass                     = "AzureServices"
+    default_action             = length(var.firewall_ip_rules) == 0 && length(var.firewall_subnet_rules) == 0 ? "Allow" : "Deny"
+    ip_rules                   = var.firewall_ip_rules
+    virtual_network_subnet_ids = var.firewall_subnet_rules
+  }
 }
 
 resource "azurerm_key_vault_access_policy" "this" {

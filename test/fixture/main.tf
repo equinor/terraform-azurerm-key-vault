@@ -32,6 +32,8 @@ module "vault" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
 
+  firewall_ip_rules = var.firewall_ip_rules
+
   client_secret_permissions = ["Get", "List", "Set", "Delete", "Recover", "Backup", "Restore", "Purge"]
 
   log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id

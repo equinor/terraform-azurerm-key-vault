@@ -30,6 +30,18 @@ variable "tags" {
   default     = {}
 }
 
+variable "firewall_ip_rules" {
+  description = "A list of IP addresses or CIDR blocks that should be able to access the Key Vault."
+  type        = list(string)
+  default     = []
+}
+
+variable "firewall_subnet_rules" {
+  description = "A list of IDs of the subnets that should be able to access the Key Vault."
+  type        = list(string)
+  default     = []
+}
+
 variable "client_secret_permissions" {
   description = "A list of Key Vault Secret permissions to assign to the current client."
   type        = list(string)

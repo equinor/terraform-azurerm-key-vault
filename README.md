@@ -90,6 +90,8 @@ No modules.
 | <a name="input_client_key_permissions"></a> [client\_key\_permissions](#input\_client\_key\_permissions) | A list of Key Vault Key permissions to assign to the current client. | `list(string)` | `[]` | no |
 | <a name="input_client_secret_permissions"></a> [client\_secret\_permissions](#input\_client\_secret\_permissions) | A list of Key Vault Secret permissions to assign to the current client. | `list(string)` | <pre>[<br>  "Get",<br>  "List",<br>  "Set",<br>  "Delete",<br>  "Recover",<br>  "Backup",<br>  "Restore"<br>]</pre> | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment to create the resources for. | `string` | n/a | yes |
+| <a name="input_firewall_ip_rules"></a> [firewall\_ip\_rules](#input\_firewall\_ip\_rules) | A list of IP addresses or CIDR blocks that should be able to access the Key Vault. | `list(string)` | `[]` | no |
+| <a name="input_firewall_subnet_rules"></a> [firewall\_subnet\_rules](#input\_firewall\_subnet\_rules) | A list of IDs of the subnets that should be able to access the Key Vault. | `list(string)` | `[]` | no |
 | <a name="input_key_vault_name"></a> [key\_vault\_name](#input\_key\_vault\_name) | A custom name for the Key Vault. | `string` | `null` | no |
 | <a name="input_location"></a> [location](#input\_location) | The supported Azure location where the resources exist. | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics Workspace to send diagnostics to. | `string` | n/a | yes |

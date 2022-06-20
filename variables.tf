@@ -30,6 +30,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "purge_protection_enabled" {
+  description = "Is purge protection enabled for this key vault?"
+  type        = bool
+  default     = false
+}
+
 variable "firewall_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to access the Key Vault."
   type        = list(string)

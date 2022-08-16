@@ -37,6 +37,7 @@ variable "purge_protection_enabled" {
 }
 
 variable "access_policies" {
+  description = "A list of access policies for this Key Vault."
   type = list(object({
     object_id               = string
     secret_permissions      = list(string)

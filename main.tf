@@ -18,6 +18,8 @@ resource "azurerm_key_vault" "this" {
   enabled_for_disk_encryption     = false
   enabled_for_template_deployment = false
 
+  # Access policies must be created using the `azurerm_key_vault_access_policy` resource, to prevent conflicts.
+  access_policy             = null
   enable_rbac_authorization = false
 
   tags = local.tags
@@ -28,6 +30,18 @@ resource "azurerm_key_vault" "this" {
     ip_rules                   = var.firewall_ip_rules
     virtual_network_subnet_ids = var.firewall_subnet_rules
   }
+}
+
+resource "azurerm_key_vault_access_policy" "this" {
+  for_each = { for p in var.access_policies : p.object_id => p }
+
+  key_vault_id            = azurerm_key_vault.this.id
+  tenant_id               = data.azurerm_client_config.current.tenant_id
+  object_id               = each.key
+  secret_permissions      = each.value.secret_permissions
+  certificate_permissions = each.value.certificate_permissions
+  key_permissions         = each.value.key_permissions
+  storage_permissions     = []
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

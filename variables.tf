@@ -36,6 +36,17 @@ variable "purge_protection_enabled" {
   default     = false
 }
 
+variable "access_policies" {
+  description = "A list of access policies for this Key Vault."
+  type = list(object({
+    object_id               = string
+    secret_permissions      = list(string)
+    certificate_permissions = list(string)
+    key_permissions         = list(string)
+  }))
+  default = []
+}
+
 variable "firewall_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to access the Key Vault."
   type        = list(string)

@@ -3,7 +3,7 @@ output "key_vault_id" {
   value       = azurerm_key_vault.this.id
 
   depends_on = [
-    # Access policies MUST be created before managing Key Vault objects.
+    # Access policies should be created before managing Key Vault objects.
     azurerm_key_vault_access_policy.this
   ]
 }

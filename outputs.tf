@@ -1,6 +1,11 @@
 output "key_vault_id" {
   description = "The ID of the Key Vault."
   value       = azurerm_key_vault.this.id
+
+  depends_on = [
+    # Access policies MUST be created before managing Key Vault objects.
+    azurerm_key_vault_access_policy.this
+  ]
 }
 
 output "key_vault_name" {

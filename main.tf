@@ -1,11 +1,7 @@
-locals {
-  tags = merge({ application = var.application, environment = var.environment }, var.tags)
-}
-
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "this" {
-  name                = coalesce(var.key_vault_name, "kv-${var.application}-${var.environment}")
+  name                = var.vault_name
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "standard"
@@ -22,7 +18,7 @@ resource "azurerm_key_vault" "this" {
   access_policy             = null
   enable_rbac_authorization = false
 
-  tags = local.tags
+  tags = var.tags
 
   network_acls {
     bypass                     = "AzureServices"

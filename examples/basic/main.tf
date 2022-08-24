@@ -32,6 +32,7 @@ module "log_analytics" {
 }
 
 module "key_vault" {
+  # source = "github.com/equinor/terraform-azurerm-key-vault"
   source = "../.."
 
   vault_name                 = "kv-${random_id.this.hex}"

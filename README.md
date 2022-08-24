@@ -1,58 +1,6 @@
-# terraform-azurerm-vault
+# Azure Key Vault Terraform module
 
-Terraform module which creates an Azure Key Vault.
-
-## Usage
-
-```terraform
-provider "azurerm" {
-  features {}
-}
-
-locals {
-  application = "my-app"
-  environment = "example"
-}
-
-resource "azurerm_resource_group" "example" {
-  name     = "rg-${local.application}-${local.environment}"
-  location = "northeurope"
-}
-
-resource "azurerm_log_analytics_workspace" "example" {
-  name                = "log-${local.application}-${local.environment}"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-  sku                 = "Free"
-}
-
-module "vault" {
-  source = "github.com/equinor/terraform-azurerm-vault"
-
-  application = local.application
-  environment = local.environment
-
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
-}
-```
-
-## Test
-
-### Prerequisites
-
-- Install the latest version of [Go](https://go.dev/dl/).
-- Install [Terraform](https://www.terraform.io/downloads).
-- Configure your Azure credentials using one of the [options supported by the AzureRM provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure).
-
-### Run test
-
-```bash
-cd ./test/
-go test -v -timeout 60m
-```
+Terraform module which creates an Azure Key vault.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements

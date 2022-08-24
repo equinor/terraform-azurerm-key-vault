@@ -3,8 +3,6 @@ provider "azurerm" {
 }
 
 locals {
-  postfix = random_id.this.hex
-
   tags = {
     environment = "test"
   }
@@ -17,23 +15,29 @@ resource "random_id" "this" {
 }
 
 resource "azurerm_resource_group" "this" {
-  name     = "rg-${local.postfix}"
+  name     = "rg-${random_id.this.hex}"
   location = var.location
+
+  tags = local.tags
 }
 
-resource "azurerm_log_analytics_workspace" "this" {
-  name                = "log-${local.postfix}"
+module "log_analytics" {
+  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.0.0"
+
+  workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
+
+  tags = local.tags
 }
 
-module "vault" {
+module "key_vault" {
   source = "../.."
 
-  vault_name                 = "kv-${local.postfix}"
+  vault_name                 = "kv-${random_id.this.hex}"
   resource_group_name        = azurerm_resource_group.this.name
   location                   = azurerm_resource_group.this.location
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
+  log_analytics_workspace_id = module.log_analytics.workspace_id
 
   access_policies = [
     {

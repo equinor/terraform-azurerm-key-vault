@@ -48,5 +48,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_vault_id"></a> [vault\_id](#output\_vault\_id) | The ID of this Key vault. |
+| <a name="output_vault_name"></a> [vault\_name](#output\_vault\_name) | The name of this Key Vault. |
 | <a name="output_vault_uri"></a> [vault\_uri](#output\_vault\_uri) | The URI of this Key vault. |
 <!-- END_TF_DOCS -->

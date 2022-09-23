@@ -1,3 +1,16 @@
+locals {
+  access_policies = [
+    for p in var.access_policies : {
+      tenant_id               = data.azurerm_client_config.current.tenant_id
+      object_id               = p.object_id
+      secret_permissions      = p.secret_permissions
+      certificate_permissions = p.certificate_permissions
+      key_permissions         = p.key_permissions
+      storage_permissions     = []
+    }
+  ]
+}
+
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "this" {
@@ -15,7 +28,7 @@ resource "azurerm_key_vault" "this" {
   enabled_for_template_deployment = false
 
   # Access policies must be created using the `azurerm_key_vault_access_policy` resource, to prevent conflicts.
-  access_policy             = null
+  access_policy             = local.access_policies
   enable_rbac_authorization = false
 
   tags = var.tags
@@ -26,18 +39,6 @@ resource "azurerm_key_vault" "this" {
     ip_rules                   = var.firewall_ip_rules
     virtual_network_subnet_ids = var.firewall_subnet_rules
   }
-}
-
-resource "azurerm_key_vault_access_policy" "this" {
-  for_each = { for p in var.access_policies : p.object_id => p }
-
-  key_vault_id            = azurerm_key_vault.this.id
-  tenant_id               = data.azurerm_client_config.current.tenant_id
-  object_id               = each.key
-  secret_permissions      = each.value.secret_permissions
-  certificate_permissions = each.value.certificate_permissions
-  key_permissions         = each.value.key_permissions
-  storage_permissions     = []
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

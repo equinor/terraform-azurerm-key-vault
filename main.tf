@@ -28,7 +28,6 @@ resource "azurerm_key_vault" "this" {
   enabled_for_disk_encryption     = false
   enabled_for_template_deployment = false
 
-  # Access policies must be created using the `azurerm_key_vault_access_policy` resource, to prevent conflicts.
   access_policy             = local.access_policies
   enable_rbac_authorization = false
 

@@ -7,7 +7,7 @@ Terraform module which creates an Azure Key vault.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 2.42.0 |
 
 ## Providers
@@ -32,7 +32,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_access_policies"></a> [access\_policies](#input\_access\_policies) | A list of access policies for this Key vault. | <pre>list(object({<br>    object_id               = string<br>    secret_permissions      = list(string)<br>    certificate_permissions = list(string)<br>    key_permissions         = list(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_access_policies"></a> [access\_policies](#input\_access\_policies) | A list of access policies for this Key vault. | <pre>list(object({<br>    object_id               = string<br>    secret_permissions      = optional(list(string), [])<br>    certificate_permissions = optional(list(string), [])<br>    key_permissions         = optional(list(string), [])<br>  }))</pre> | `[]` | no |
 | <a name="input_firewall_ip_rules"></a> [firewall\_ip\_rules](#input\_firewall\_ip\_rules) | A list of IP addresses or CIDR blocks that should be able to access this Key vault. | `list(string)` | `[]` | no |
 | <a name="input_firewall_subnet_rules"></a> [firewall\_subnet\_rules](#input\_firewall\_subnet\_rules) | A list of IDs of the subnets that should be able to access this Key vault. | `list(string)` | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |

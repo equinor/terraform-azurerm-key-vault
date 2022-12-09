@@ -33,6 +33,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_policies"></a> [access\_policies](#input\_access\_policies) | A list of access policies for this Key vault. | <pre>list(object({<br>    object_id               = string<br>    secret_permissions      = optional(list(string), [])<br>    certificate_permissions = optional(list(string), [])<br>    key_permissions         = optional(list(string), [])<br>  }))</pre> | `[]` | no |
+| <a name="input_firewall_bypass_azure"></a> [firewall\_bypass\_azure](#input\_firewall\_bypass\_azure) | Should Azure services be able to bypass the Key vault firewall? | `bool` | `true` | no |
 | <a name="input_firewall_ip_rules"></a> [firewall\_ip\_rules](#input\_firewall\_ip\_rules) | A list of IP addresses or CIDR blocks that should be able to access this Key vault. | `list(string)` | `[]` | no |
 | <a name="input_firewall_subnet_rules"></a> [firewall\_subnet\_rules](#input\_firewall\_subnet\_rules) | A list of IDs of the subnets that should be able to access this Key vault. | `list(string)` | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |

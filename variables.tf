@@ -42,6 +42,12 @@ variable "firewall_subnet_rules" {
   default     = []
 }
 
+variable "firewall_bypass_azure" {
+  description = "Should Azure services be able to bypass the Key vault firewall?"
+  type        = bool
+  default     = true
+}
+
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
   type        = string

@@ -37,7 +37,7 @@ resource "azurerm_key_vault" "this" {
 
   network_acls {
     bypass                     = local.firewall_bypass
-    default_action             = length(var.firewall_ip_rules) == 0 && length(var.firewall_subnet_rules) == 0 && var.firewall_bypass == "None" ? "Allow" : "Deny"
+    default_action             = length(var.firewall_ip_rules) == 0 && length(var.firewall_subnet_rules) == 0 && local.firewall_bypass == "None" ? "Allow" : "Deny"
     ip_rules                   = var.firewall_ip_rules
     virtual_network_subnet_ids = var.firewall_subnet_rules
   }

@@ -30,19 +30,19 @@ variable "access_policies" {
   default = []
 }
 
-variable "firewall_ip_rules" {
+variable "network_acls_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to access this Key vault."
   type        = list(string)
   default     = []
 }
 
-variable "firewall_subnet_rules" {
+variable "network_acls_virtual_network_subnet_ids" {
   description = "A list of IDs of the subnets that should be able to access this Key vault."
   type        = list(string)
   default     = []
 }
 
-variable "firewall_bypass_azure" {
+variable "network_acls_bypass_azure_services" {
   description = "Should Azure services be able to bypass the Key vault firewall?"
   type        = bool
   default     = true

@@ -47,11 +47,5 @@ module "key_vault" {
     }
   ]
 
-  firewall_ip_rules = [
-    "1.1.1.1/32",
-    "2.2.2.2/32",
-    "3.3.3.3/32"
-  ]
-
   tags = local.tags
 }

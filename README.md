@@ -33,6 +33,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_access_policies"></a> [access\_policies](#input\_access\_policies) | A list of access policies for this Key vault. | <pre>list(object({<br>    object_id               = string<br>    secret_permissions      = optional(list(string), [])<br>    certificate_permissions = optional(list(string), [])<br>    key_permissions         = optional(list(string), [])<br>  }))</pre> | `[]` | no |
+| <a name="input_diagnostic_setting_name"></a> [diagnostic\_setting\_name](#input\_diagnostic\_setting\_name) | The name of this diagnostic setting. | `string` | `"audit-logs"` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location to create the resources in. | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The ID of the Log Analytics workspace to send diagnostics to. | `string` | n/a | yes |
 | <a name="input_network_acls_bypass_azure_services"></a> [network\_acls\_bypass\_azure\_services](#input\_network\_acls\_bypass\_azure\_services) | Should Azure services be able to bypass the network ACL and access this Key vault? | `bool` | `true` | no |

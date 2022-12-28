@@ -48,6 +48,12 @@ variable "network_acls_bypass_azure_services" {
   default     = true
 }
 
+variable "diagnostic_setting_name" {
+  description = "The name of this diagnostic setting."
+  type        = string
+  default     = "audit-logs"
+}
+
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
   type        = string

@@ -8,13 +8,13 @@ Terraform module which creates an Azure Key vault.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 2.42.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 2.9.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 2.42.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 2.9.0 |
 
 ## Modules
 

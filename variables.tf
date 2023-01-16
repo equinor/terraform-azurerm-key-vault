@@ -30,6 +30,12 @@ variable "access_policies" {
   default = []
 }
 
+variable "enable_rbac_authorization" {
+  description = "Should RBAC authorization be enabled for this Key vault?"
+  type        = bool
+  default     = false
+}
+
 variable "network_acls_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to bypass the network ACL and access this Key vault."
   type        = list(string)

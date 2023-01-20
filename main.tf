@@ -10,8 +10,6 @@ locals {
       storage_permissions     = []
     }
   ]
-
-  network_acls_bypass = var.network_acls_bypass_azure_services ? "AzureServices" : "None"
 }
 
 data "azurerm_client_config" "current" {}
@@ -36,8 +34,8 @@ resource "azurerm_key_vault" "this" {
   tags = var.tags
 
   network_acls {
-    bypass                     = local.network_acls_bypass
-    default_action             = length(var.network_acls_ip_rules) == 0 && length(var.network_acls_virtual_network_subnet_ids) == 0 && local.network_acls_bypass == "None" ? "Allow" : "Deny"
+    bypass                     = var.network_acls_bypass
+    default_action             = var.network_acls_default_action
     ip_rules                   = var.network_acls_ip_rules
     virtual_network_subnet_ids = var.network_acls_virtual_network_subnet_ids
   }

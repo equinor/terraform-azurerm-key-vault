@@ -36,6 +36,18 @@ variable "enable_rbac_authorization" {
   default     = false
 }
 
+variable "network_acls_bypass" {
+  description = "Specifies which traffic can bypass the network rules for this Key vault. Possible values are AzureServices and None."
+  type        = string
+  default     = "AzureServices"
+}
+
+variable "network_acls_default_action" {
+  description = "Specifies the default action to use when no other rules match. Possible values are Allow or Deny."
+  type        = string
+  default     = "Deny"
+}
+
 variable "network_acls_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to bypass the network ACL and access this Key vault."
   type        = list(string)
@@ -46,12 +58,6 @@ variable "network_acls_virtual_network_subnet_ids" {
   description = "A list of Virtual Network subnet IDs that should be able to bypass the network ACL and access this Key vault."
   type        = list(string)
   default     = []
-}
-
-variable "network_acls_bypass_azure_services" {
-  description = "Should Azure services be able to bypass the network ACL and access this Key vault?"
-  type        = bool
-  default     = true
 }
 
 variable "diagnostic_setting_name" {

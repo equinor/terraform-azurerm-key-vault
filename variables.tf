@@ -13,6 +13,12 @@ variable "location" {
   type        = string
 }
 
+variable "soft_delete_retention_days" {
+  description = "The number of days that items should be retained for once soft-deleted."
+  type        = number
+  default     = 90
+}
+
 variable "purge_protection_enabled" {
   description = "Is purge protection enabled for this Key vault?"
   type        = bool

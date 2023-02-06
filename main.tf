@@ -45,7 +45,7 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   name                           = var.diagnostic_setting_name
   target_resource_id             = azurerm_key_vault.this.id
   log_analytics_workspace_id     = var.log_analytics_workspace_id
-  log_analytics_destination_type = "AzureDiagnostics"
+  log_analytics_destination_type = null
 
   log {
     category = "AuditEvent"

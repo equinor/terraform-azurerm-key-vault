@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.2.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.1.1...v8.2.0) (2023-02-08)
+
+
+### Features
+
+* set log analytics destination type and update min. provider version. ([#46](https://github.com/equinor/terraform-azurerm-key-vault/issues/46)) ([ea89e2d](https://github.com/equinor/terraform-azurerm-key-vault/commit/ea89e2d94fb7325716cfca81a684d6931401d168))
+
 ## [8.1.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.1.0...v8.1.1) (2023-02-06)
 
 

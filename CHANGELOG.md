@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.2.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.2.0...v8.2.1) (2023-02-09)
+
+
+### Bug Fixes
+
+* remove disabled log block ([#48](https://github.com/equinor/terraform-azurerm-key-vault/issues/48)) ([422670b](https://github.com/equinor/terraform-azurerm-key-vault/commit/422670b3b2b675ad82cb1394ecec33d83869d435))
+
 ## [8.2.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.1.1...v8.2.0) (2023-02-08)
 
 

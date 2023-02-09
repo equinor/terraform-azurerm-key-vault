@@ -56,15 +56,6 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     }
   }
 
-  enabled_log {
-    category = "AzurePolicyEvaluationDetails"
-
-    retention_policy {
-      days    = 0
-      enabled = false
-    }
-  }
-
   metric {
     category = "AllMetrics"
     enabled  = true

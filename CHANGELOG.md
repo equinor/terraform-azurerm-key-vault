@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.3.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.2.1...v8.3.0) (2023-04-24)
+
+
+### Features
+
+* set diagnostic setting enabled log categories ([#53](https://github.com/equinor/terraform-azurerm-key-vault/issues/53)) ([a1369c7](https://github.com/equinor/terraform-azurerm-key-vault/commit/a1369c7fd6311472a7fe4bc77d6ab10b00a91a28))
+
 ## [8.2.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.2.0...v8.2.1) (2023-02-09)
 
 

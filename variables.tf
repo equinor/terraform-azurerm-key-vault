@@ -29,7 +29,7 @@ variable "access_policies" {
   description = "A list of access policies for this Key vault."
   type = list(object({
     object_id               = string
-    secret_permissions      = optional(list(string), [])
+    secret_permissions      = optional(list(string), []) # Set to ["All"] to set all non-privileged permissions
     certificate_permissions = optional(list(string), [])
     key_permissions         = optional(list(string), [])
   }))

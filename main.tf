@@ -4,7 +4,7 @@ locals {
       tenant_id               = data.azurerm_client_config.current.tenant_id
       application_id          = ""
       object_id               = p.object_id
-      secret_permissions      = p.secret_permissions
+      secret_permissions      = contains(p.secret_permissions, "All") ? concat(["Get", "List", "Set", "Delete", "Backup", "Restore", "Recover"], p.secret_permissions) : p.secret_permissions
       certificate_permissions = p.certificate_permissions
       key_permissions         = p.key_permissions
       storage_permissions     = []

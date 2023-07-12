@@ -48,12 +48,6 @@ variable "network_acls_bypass" {
   default     = "AzureServices"
 }
 
-variable "network_acls_default_action" {
-  description = "Specifies the default action to use when no other rules match. Possible values are Allow or Deny."
-  type        = string
-  default     = "Deny"
-}
-
 variable "network_acls_ip_rules" {
   description = "A list of IP addresses or CIDR blocks that should be able to bypass the network ACL and access this Key vault."
   type        = list(string)

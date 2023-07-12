@@ -34,8 +34,8 @@ resource "azurerm_key_vault" "this" {
   tags = var.tags
 
   network_acls {
+    default_action             = "Deny"
     bypass                     = var.network_acls_bypass
-    default_action             = var.network_acls_default_action
     ip_rules                   = var.network_acls_ip_rules
     virtual_network_subnet_ids = var.network_acls_virtual_network_subnet_ids
   }

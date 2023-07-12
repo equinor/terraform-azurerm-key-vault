@@ -1,5 +1,16 @@
 # Changelog
 
+## [9.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.3.0...v9.0.0) (2023-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variable `network_acls_default_action`
+
+### Features
+
+* enforce network ACLs default action ([#57](https://github.com/equinor/terraform-azurerm-key-vault/issues/57)) ([9b3d883](https://github.com/equinor/terraform-azurerm-key-vault/commit/9b3d8836c25e4625884e64d2f20ac2845617abbb))
+
 ## [8.3.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.2.1...v8.3.0) (2023-04-24)
 
 

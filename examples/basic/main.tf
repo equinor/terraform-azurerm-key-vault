@@ -2,14 +2,6 @@ provider "azurerm" {
   features {}
 }
 
-locals {
-  tags = {
-    environment = "test"
-  }
-}
-
-data "azurerm_client_config" "current" {}
-
 resource "random_id" "this" {
   byte_length = 8
 }
@@ -17,8 +9,6 @@ resource "random_id" "this" {
 resource "azurerm_resource_group" "this" {
   name     = "rg-${random_id.this.hex}"
   location = var.location
-
-  tags = local.tags
 }
 
 module "log_analytics" {
@@ -27,8 +17,6 @@ module "log_analytics" {
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
-
-  tags = local.tags
 }
 
 module "key_vault" {
@@ -39,13 +27,14 @@ module "key_vault" {
   resource_group_name        = azurerm_resource_group.this.name
   location                   = azurerm_resource_group.this.location
   log_analytics_workspace_id = module.log_analytics.workspace_id
+}
 
-  access_policies = [
-    {
-      object_id          = data.azurerm_client_config.current.object_id
-      secret_permissions = ["Get", "List", "Set", "Delete", "Backup", "Restore", "Recover"]
-    }
-  ]
+# Give current client full access to Key Vault secrets
 
-  tags = local.tags
+data "azurerm_client_config" "current" {}
+
+resource "azurerm_role_assignment" "example" {
+  scope                = module.key_vault.vault_id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azurerm_client_config.current.object_id
 }

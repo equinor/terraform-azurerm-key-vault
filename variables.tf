@@ -39,7 +39,7 @@ variable "access_policies" {
 variable "enable_rbac_authorization" {
   description = "Should RBAC authorization be enabled for this Key vault?"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "network_acls_bypass" {

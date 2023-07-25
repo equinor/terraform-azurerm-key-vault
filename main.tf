@@ -42,10 +42,13 @@ resource "azurerm_key_vault" "this" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
-  name                           = var.diagnostic_setting_name
-  target_resource_id             = azurerm_key_vault.this.id
-  log_analytics_workspace_id     = var.log_analytics_workspace_id
-  log_analytics_destination_type = var.log_analytics_destination_type
+  name                       = var.diagnostic_setting_name
+  target_resource_id         = azurerm_key_vault.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  # "log_analytics_destination_type" is unconfigurable for Key Vault.
+  # Ref: https://registry.terraform.io/providers/hashicorp/azurerm/3.65.0/docs/resources/monitor_diagnostic_setting#log_analytics_destination_type
+  log_analytics_destination_type = null
 
   dynamic "enabled_log" {
     for_each = toset(var.diagnostic_setting_enabled_log_categories)

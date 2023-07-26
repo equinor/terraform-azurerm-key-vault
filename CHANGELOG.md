@@ -1,5 +1,21 @@
 # Changelog
 
+## [10.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v9.0.0...v10.0.0) (2023-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* variable `enable_rbac_authorization` default value set to `true`.
+
+### Features
+
+* enable RBAC authorization by default ([#60](https://github.com/equinor/terraform-azurerm-key-vault/issues/60)) ([9066181](https://github.com/equinor/terraform-azurerm-key-vault/commit/906618197c8b8a62920b6ee7f93f7a9f5f79e6a8))
+
+
+### Bug Fixes
+
+* remove Log Analytics destination type variable ([#63](https://github.com/equinor/terraform-azurerm-key-vault/issues/63)) ([29fdcee](https://github.com/equinor/terraform-azurerm-key-vault/commit/29fdceec318d62963ac8dfefc24dcef3f4e11667)), closes [#62](https://github.com/equinor/terraform-azurerm-key-vault/issues/62)
+
 ## [9.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v8.3.0...v9.0.0) (2023-07-12)
 
 

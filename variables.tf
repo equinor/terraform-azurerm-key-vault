@@ -42,10 +42,10 @@ variable "enable_rbac_authorization" {
   default     = true
 }
 
-variable "network_acls_bypass" {
-  description = "Specifies which traffic can bypass the network rules for this Key vault. Possible values are AzureServices and None."
-  type        = string
-  default     = "AzureServices"
+variable "network_acls_bypass_azure_services" {
+  description = "Should Azure services be allowed to bypass the network ACLs of this Key Vault?."
+  type        = bool
+  default     = true
 }
 
 variable "network_acls_ip_rules" {

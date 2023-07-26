@@ -1,5 +1,16 @@
 # Changelog
 
+## [11.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v10.0.0...v11.0.0) (2023-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* simplify network configuration ([#64](https://github.com/equinor/terraform-azurerm-key-vault/issues/64))
+
+### Code Refactoring
+
+* simplify network configuration ([#64](https://github.com/equinor/terraform-azurerm-key-vault/issues/64)) ([a32b7c2](https://github.com/equinor/terraform-azurerm-key-vault/commit/a32b7c2e80b6d6b866f5a36bc8779b8a119721e4))
+
 ## [10.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v9.0.0...v10.0.0) (2023-07-26)
 
 

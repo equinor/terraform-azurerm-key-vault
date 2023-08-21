@@ -42,6 +42,12 @@ variable "enable_rbac_authorization" {
   default     = true
 }
 
+variable "public_network_access_enabled" {
+  description = "Should public network access be enabled for this Key Vault?"
+  type        = bool
+  default     = true
+}
+
 variable "network_acls_bypass_azure_services" {
   description = "Should Azure services be allowed to bypass the network ACLs of this Key Vault?."
   type        = bool

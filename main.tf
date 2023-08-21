@@ -31,7 +31,7 @@ resource "azurerm_key_vault" "this" {
   access_policy             = local.access_policies
   enable_rbac_authorization = var.enable_rbac_authorization
 
-  tags = var.tags
+  public_network_access_enabled = var.public_network_access_enabled
 
   network_acls {
     default_action             = "Deny"
@@ -39,6 +39,8 @@ resource "azurerm_key_vault" "this" {
     ip_rules                   = var.network_acls_ip_rules
     virtual_network_subnet_ids = var.network_acls_virtual_network_subnet_ids
   }
+
+  tags = var.tags
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.1.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.0.0...v11.1.0) (2023-08-21)
+
+
+### Features
+
+* enable public network access ([#66](https://github.com/equinor/terraform-azurerm-key-vault/issues/66)) ([c963c3d](https://github.com/equinor/terraform-azurerm-key-vault/commit/c963c3d2b42935f17b1d0e47ff2eba8e1c6d83c7))
+
 ## [11.0.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v10.0.0...v11.0.0) (2023-07-26)
 
 

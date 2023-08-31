@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.2.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.1.0...v11.2.0) (2023-08-31)
+
+
+### Features
+
+* set network ACLs default actions ([#68](https://github.com/equinor/terraform-azurerm-key-vault/issues/68)) ([6b49eff](https://github.com/equinor/terraform-azurerm-key-vault/commit/6b49effd5f3b131cffc554e3d9f4befaa387f4c3))
+
 ## [11.1.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.0.0...v11.1.0) (2023-08-21)
 
 

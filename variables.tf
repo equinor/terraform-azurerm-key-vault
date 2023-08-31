@@ -48,6 +48,17 @@ variable "public_network_access_enabled" {
   default     = true
 }
 
+variable "network_acls_default_action" {
+  description = "The default action of the network ACLs of this Key Vault."
+  type        = string
+  default     = "Deny"
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.network_acls_default_action)
+    error_message = "Default action must be \"Allow\" or \"Deny\"."
+  }
+}
+
 variable "network_acls_bypass_azure_services" {
   description = "Should Azure services be allowed to bypass the network ACLs of this Key Vault?."
   type        = bool

@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.2.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.2.0...v11.2.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* remove diagnostic setting retention policies ([#77](https://github.com/equinor/terraform-azurerm-key-vault/issues/77)) ([e7af314](https://github.com/equinor/terraform-azurerm-key-vault/commit/e7af3143733972d0cafdb13703771f8ff6daf4ca))
+
 ## [11.2.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.1.0...v11.2.0) (2023-08-31)
 
 

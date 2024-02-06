@@ -25,6 +25,12 @@ variable "purge_protection_enabled" {
   default     = false
 }
 
+variable "enabled_for_disk_encryption" {
+  description = "Is the Key vault enabled for disk encryption?"
+  type        = bool
+  default     = false
+}
+
 variable "access_policies" {
   description = "A list of access policies for this Key vault."
   type = list(object({

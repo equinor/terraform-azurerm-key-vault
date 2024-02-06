@@ -25,7 +25,7 @@ resource "azurerm_key_vault" "this" {
   purge_protection_enabled   = var.purge_protection_enabled
 
   enabled_for_deployment          = false
-  enabled_for_disk_encryption     = false
+  enabled_for_disk_encryption     = var.enabled_for_disk_encryption
   enabled_for_template_deployment = false
 
   access_policy             = local.access_policies

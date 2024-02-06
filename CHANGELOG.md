@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.3.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.2.1...v11.3.0) (2024-02-06)
+
+
+### Features
+
+* add enabled for disk encryption flag ([#79](https://github.com/equinor/terraform-azurerm-key-vault/issues/79)) ([7f1ee9b](https://github.com/equinor/terraform-azurerm-key-vault/commit/7f1ee9b1ede34855a199d780be09c4cad78dc26a))
+
 ## [11.2.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.2.0...v11.2.1) (2023-12-20)
 
 

@@ -95,6 +95,12 @@ variable "diagnostic_setting_enabled_log_categories" {
   default     = ["AuditEvent"]
 }
 
+variable "diagnostic_setting_enabled_metric_categories" {
+  description = "A list of metric categories to be enabled for this diagnostic setting."
+  type        = list(string)
+  default     = []
+}
+
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
   type        = string

@@ -12,7 +12,6 @@ locals {
   ]
 
   diagnostic_setting_metric_categories = ["AllMetrics"]
-
 }
 
 data "azurerm_client_config" "current" {}

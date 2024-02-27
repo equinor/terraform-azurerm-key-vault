@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.4.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.3.0...v11.4.0) (2024-02-22)
+
+
+### Features
+
+* variable for diagnostic setting metric ([#84](https://github.com/equinor/terraform-azurerm-key-vault/issues/84)) ([9b5e983](https://github.com/equinor/terraform-azurerm-key-vault/commit/9b5e983b08737e268d9b9f7d8c598b77c5388b19))
+
 ## [11.3.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.2.1...v11.3.0) (2024-02-06)
 
 

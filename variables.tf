@@ -31,6 +31,18 @@ variable "enabled_for_disk_encryption" {
   default     = false
 }
 
+variable "enabled_for_deployment" {
+  description = "Is the Key vault enabled for deployment?"
+  type        = bool
+  default     = false
+}
+
+variable "enabled_for_template_deployment" {
+  description = "Is the Key vault enabled for deployment via templates?"
+  type        = bool
+  default     = false
+}
+
 variable "access_policies" {
   description = "A list of access policies for this Key vault."
   type = list(object({

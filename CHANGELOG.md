@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.5.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.4.0...v11.5.0) (2024-03-08)
+
+
+### Features
+
+* add deployment vars ([#86](https://github.com/equinor/terraform-azurerm-key-vault/issues/86)) ([37814f0](https://github.com/equinor/terraform-azurerm-key-vault/commit/37814f0926a534b787ad10caa80834aa74e19387))
+
 ## [11.4.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.3.0...v11.4.0) (2024-02-22)
 
 

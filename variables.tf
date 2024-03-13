@@ -1,5 +1,5 @@
 variable "vault_name" {
-  description = "The name of this Key vault."
+  description = "The name of this Key Vault."
   type        = string
 }
 
@@ -20,31 +20,31 @@ variable "soft_delete_retention_days" {
 }
 
 variable "purge_protection_enabled" {
-  description = "Is purge protection enabled for this Key vault?"
-  type        = bool
-  default     = false
-}
-
-variable "enabled_for_disk_encryption" {
-  description = "Is the Key vault enabled for disk encryption?"
+  description = "Is purge protection enabled for this Key Vault?"
   type        = bool
   default     = false
 }
 
 variable "enabled_for_deployment" {
-  description = "Is the Key vault enabled for deployment?"
+  description = "Should Azure Virtual Machines be permitted to retrieve certificates stored as secrets from this Key Vault?"
+  type        = bool
+  default     = false
+}
+
+variable "enabled_for_disk_encryption" {
+  description = "Should Azure Disk Encryption be permitted to retrieve secrets and unwrap keys from this Key Vault?"
   type        = bool
   default     = false
 }
 
 variable "enabled_for_template_deployment" {
-  description = "Is the Key vault enabled for deployment via templates?"
+  description = "Should Azure Resource Manager be permitted to retrieve secrets from this Key Vault?"
   type        = bool
   default     = false
 }
 
 variable "access_policies" {
-  description = "A list of access policies for this Key vault."
+  description = "A list of access policies for this Key Vault. The access policy model is a legacy authorization system. RBAC is the recommended authorization system."
   type = list(object({
     object_id               = string
     secret_permissions      = optional(list(string), [])
@@ -55,7 +55,7 @@ variable "access_policies" {
 }
 
 variable "enable_rbac_authorization" {
-  description = "Should RBAC authorization be enabled for this Key vault?"
+  description = "Should RBAC authorization be enabled for this Key Vault?"
   type        = bool
   default     = true
 }
@@ -78,19 +78,19 @@ variable "network_acls_default_action" {
 }
 
 variable "network_acls_bypass_azure_services" {
-  description = "Should Azure services be allowed to bypass the network ACLs of this Key Vault?."
+  description = "Should Azure services be allowed to bypass the network ACLs of this Key Vault?"
   type        = bool
   default     = true
 }
 
 variable "network_acls_ip_rules" {
-  description = "A list of IP addresses or CIDR blocks that should be able to bypass the network ACL and access this Key vault."
+  description = "A list of IP addresses or CIDR blocks that should be able to bypass the network ACLs and access this Key Vault."
   type        = list(string)
   default     = []
 }
 
 variable "network_acls_virtual_network_subnet_ids" {
-  description = "A list of Virtual Network subnet IDs that should be able to bypass the network ACL and access this Key vault."
+  description = "A list of Virtual Network subnet IDs that should be able to bypass the network ACLs and access this Key Vault."
   type        = list(string)
   default     = []
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.5.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.5.0...v11.5.1) (2024-03-13)
+
+
+### Miscellaneous Chores
+
+* update variable and output descriptions ([#88](https://github.com/equinor/terraform-azurerm-key-vault/issues/88)) ([2128edb](https://github.com/equinor/terraform-azurerm-key-vault/commit/2128edb9dde481eb082743327f1dd835b943f0c3))
+
 ## [11.5.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.4.0...v11.5.0) (2024-03-08)
 
 

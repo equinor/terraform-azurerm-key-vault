@@ -8,16 +8,11 @@ Terraform module which creates an Azure Key Vault.
 
 ## Features
 
-- Sets `standard` SKU.
-- Sets soft-delete retention period for `90` days, by default.
-- Disables purge protection, by default. Once enabled it cannot be disabled afterwards.
-- Option for retrieving secrets by other Azure services, is disabled by default.
-- Allows setting a list of access policies, empty by default.
-- Enables RBAC authorization, by default.
-- Enables public network access, by default.
-- Network ACLs denies all traffic by default.
-- Enables Azure services to bypass network ACL's by default.
-- Sends audit logs to given Log Analytics workspace.
+- Soft-delete retention set to 90 days by default.
+- Purge protection disabled by default.
+- Role-based access control (RBAC) authorization enabled by default.
+- Public network access denied by default.
+- Audit logs sent to given Log Analytics workspace by default.
 
 ## Development
 

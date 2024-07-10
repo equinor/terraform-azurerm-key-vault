@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.5.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.5.1...v11.5.2) (2024-07-10)
+
+
+### Documentation
+
+* add "Features" section to README ([#94](https://github.com/equinor/terraform-azurerm-key-vault/issues/94)) ([ff0e373](https://github.com/equinor/terraform-azurerm-key-vault/commit/ff0e37323dd83abd8efca8e022bcd12c1a64afcc))
+
 ## [11.5.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.5.0...v11.5.1) (2024-03-13)
 
 

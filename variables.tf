@@ -118,6 +118,11 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
+variable "action_group_id" {
+  description = "The ID of the action group to send alerts to."
+  type        = string
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

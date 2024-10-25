@@ -1,5 +1,5 @@
 module "vault" {
-  source = "./module/vault"
+  source = "./modules/vault"
 
   vault_name                 = var.vault_name
   resource_group_name        = var.resource_group_name
@@ -30,7 +30,7 @@ module "vault" {
 }
 
 module "alerts" {
-  source = "./module/alerts"
+  source = "./modules/alerts"
 
   vault_id        = module.vault.vault_id
   action_group_id = var.action_group_id

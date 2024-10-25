@@ -1,19 +1,3 @@
-locals {
-  metric_alerts = {
-    "availability" = {
-      name        = "Reduced availability"
-      description = ""
-      metric_name = "Availability"
-      aggregation = "Average"
-      operator    = "LessThan"
-      threshold   = 100
-      frequency   = "PT1M"
-      window_size = "PT5M"
-      severity    = 1 # Error
-    }
-  }
-}
-
 module "vault" {
   source = "./module/vault"
 
@@ -45,29 +29,11 @@ module "vault" {
   tags = var.tags
 }
 
-resource "azurerm_monitor_metric_alert" "this" {
-  for_each = local.metric_alerts
+module "alerts" {
+  source = "./module/alerts"
 
-  name                = "${each.value.name} - ${azurerm_key_vault.this.name}"
-  resource_group_name = var.resource_group_name
-  scopes              = [azurerm_key_vault.this.id]
-  description         = each.value.description
-
-  criteria {
-    metric_namespace = "Microsoft.KeyVault/vaults"
-    metric_name      = each.value.metric_name
-    aggregation      = each.value.aggregation
-    operator         = each.value.operator
-    threshold        = each.value.threshold
-  }
-
-  frequency   = each.value.frequency
-  window_size = each.value.window_size
-  severity    = each.value.severity
-
-  action {
-    action_group_id = var.action_group_id
-  }
+  vault_id        = module.vault.vault_id
+  action_group_id = var.action_group_id
 
   tags = var.tags
 }

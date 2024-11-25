@@ -24,6 +24,10 @@ Terraform module which creates an Azure Key Vault.
 1. Create a Terraform configuration file `main.tf` and add the following example configuration:
 
     ```terraform
+    provider "azurerm" {
+      features {}
+    }
+
     resource "azurerm_resource_group" "example" {
       name     = "example-resources"
       location = "westeurope"

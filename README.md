@@ -33,9 +33,9 @@ Terraform module which creates an Azure Key Vault.
       source  = "equinor/log-analytics/azurerm"
       version = "~> 2.0"
 
-      workspace_name             = "example-workspace"
-      resource_group_name        = azurerm_resource_group.example.name
-      location                   = azurerm_resource_group.example.location
+      workspace_name      = "example-workspace"
+      resource_group_name = azurerm_resource_group.example.name
+      location            = azurerm_resource_group.example.location
     }
 
     module "key_vault" {

@@ -16,7 +16,7 @@ Terraform module which creates Azure Key Vault resources.
 
 ## Prerequisites
 
-- Install [Terraform](https://developer.hashicorp.com/terraform/install) **version 1.3 or higher**.
+- Install [Terraform](https://developer.hashicorp.com/terraform/install).
 - Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 ## Usage

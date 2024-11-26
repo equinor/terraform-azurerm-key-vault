@@ -61,7 +61,7 @@ Terraform module which creates an Azure Key Vault.
     terraform init
     ```
 
-1. Apply Terraform configuration:
+1. Apply the Terraform configuration:
 
     ```console
     terraform apply

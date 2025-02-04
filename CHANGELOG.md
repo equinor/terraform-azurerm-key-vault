@@ -1,5 +1,19 @@
 # Changelog
 
+## [11.6.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.0...v11.6.1) (2024-11-26)
+
+
+### Documentation
+
+* add prerequisites and usage ([#102](https://github.com/equinor/terraform-azurerm-key-vault/issues/102)) ([b1d6205](https://github.com/equinor/terraform-azurerm-key-vault/commit/b1d62057c501f6ec6d9ad17745b6c6bc448d97cf))
+
+## [11.6.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.5.2...v11.6.0) (2024-10-09)
+
+
+### Features
+
+* prevent accidental destroy of Key Vault ([#100](https://github.com/equinor/terraform-azurerm-key-vault/issues/100)) ([6fba7ae](https://github.com/equinor/terraform-azurerm-key-vault/commit/6fba7aede9c0b020d8224d9017eeb362c32e59da))
+
 ## [11.5.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.5.1...v11.5.2) (2024-07-10)
 
 

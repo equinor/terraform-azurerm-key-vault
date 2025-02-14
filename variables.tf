@@ -22,7 +22,7 @@ variable "soft_delete_retention_days" {
 variable "purge_protection_enabled" {
   description = "Is purge protection enabled for this Key Vault?"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "enabled_for_deployment" {

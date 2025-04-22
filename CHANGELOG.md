@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.6.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.1...v11.6.2) (2025-04-22)
+
+
+### Documentation
+
+* update README ([1f7630b](https://github.com/equinor/terraform-azurerm-key-vault/commit/1f7630b61122dc8ce5e574c2402e2c192bfab0ac))
+
 ## [11.6.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.0...v11.6.1) (2024-11-26)
 
 

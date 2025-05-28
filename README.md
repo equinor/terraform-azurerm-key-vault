@@ -14,13 +14,6 @@ Terraform module which creates Azure Key Vault resources.
 - Public network access denied by default.
 - Audit logs sent to given Log Analytics workspace by default.
 
-> [!WARNING]
-> Purge protection is enabled by default to prevent loss of secrets as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault). 
-> Here as some reasons why you might want to turn off purge protection:
->
-> - Secrets can be regenerated, and should be regenerated regularly. Thus, losing a key vault is not a large risk.
-> - Prevents complete recreation of a key vault (required e.g. in DR drills).
-
 ## Prerequisites
 
 - Install [Terraform](https://developer.hashicorp.com/terraform/install).
@@ -114,6 +107,16 @@ Terraform module which creates Azure Key Vault resources.
     ```console
     go test -timeout 60m
     ```
+
+## Notes
+
+#### Purge protection
+
+ Purge protection is enabled by default to prevent loss of secrets as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault).
+ Here as some reasons why you might want to turn off purge protection:
+
+- Secrets can be regenerated, and should be regenerated regularly. Thus, losing a key vault is not a large risk.
+- Prevents complete recreation of a key vault (required e.g. in DR drills).
 
 ## Contributing
 

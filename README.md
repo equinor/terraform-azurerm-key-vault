@@ -110,7 +110,7 @@ Terraform module which creates Azure Key Vault resources.
 
 ## Notes
 
-#### Purge protection
+### Purge protection
 
  Purge protection is enabled by default to prevent loss of secrets as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault).
  Here as some reasons why you might want to turn off purge protection:

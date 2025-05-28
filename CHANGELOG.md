@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.7.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.3...v11.7.0) (2025-05-28)
+
+
+### Features
+
+* enable purge protection by default ([#104](https://github.com/equinor/terraform-azurerm-key-vault/issues/104)) ([7b29d23](https://github.com/equinor/terraform-azurerm-key-vault/commit/7b29d23c4d175634a37f7181bfcb8df664f20c74))
+
 ## [11.6.3](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.2...v11.6.3) (2025-04-23)
 
 

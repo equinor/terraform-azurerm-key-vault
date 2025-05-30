@@ -14,6 +14,8 @@ Terraform module which creates Azure Key Vault resources.
 - Role-based access control (RBAC) authorization enabled by default.
 - Public network access denied by default.
 - Audit logs sent to given Log Analytics workspace by default.
+- Metric alerts sent to given action group by default:
+  - Reduced availability
 
 ## Prerequisites
 

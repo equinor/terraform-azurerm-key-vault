@@ -60,6 +60,22 @@ module "log_analytics" {
 
 Purge protection is enabled by default to protect against malicious or accidental deletion of secrets, as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault). Once purge protection has been enabled, it can't be disabled.
 
+## Testing
+
+1. Initialize working directory:
+
+    ```bash
+    terraform init
+    ```
+
+1. Execute tests:
+
+    ```bash
+    terraform test
+    ```
+
+    See [`terraform test` command documentation](https://developer.hashicorp.com/terraform/cli/commands/test) for options.
+
 ## Contributing
 
 See [Contributing guidelines](https://github.com/equinor/terraform-baseline/blob/main/CONTRIBUTING.md).

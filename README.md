@@ -58,11 +58,7 @@ module "log_analytics" {
 
 ### Purge protection
 
- Purge protection is enabled by default to prevent loss of secrets as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault).
- Here as some reasons why you might want to turn off purge protection:
-
-- Secrets can be regenerated, and should be regenerated regularly. Thus, losing a Key Vault is not a large risk.
-- Prevents complete recreation of a Key Vault (required e.g. during disaster recovery drills).
+Purge protection is enabled by default to protect against malicious or accidental deletion of secrets, as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault). Once purge protection has been enabled, it can't be disabled.
 
 ## Contributing
 

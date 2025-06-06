@@ -22,7 +22,7 @@ variable "soft_delete_retention_days" {
 variable "purge_protection_enabled" {
   description = "Is purge protection enabled for this Key Vault?"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "enabled_for_deployment" {
@@ -115,11 +115,6 @@ variable "diagnostic_setting_enabled_metric_categories" {
 
 variable "log_analytics_workspace_id" {
   description = "The ID of the Log Analytics workspace to send diagnostics to."
-  type        = string
-}
-
-variable "action_group_id" {
-  description = "The ID of the action group to send alerts to."
   type        = string
 }
 

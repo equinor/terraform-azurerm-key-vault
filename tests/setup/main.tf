@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.6.0"
-    }
-  }
-}
-
 resource "random_id" "name_suffix" {
   byte_length = 8
 }

@@ -21,7 +21,7 @@ resource "azurerm_key_vault" "this" {
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "standard"
-  tenant_id           = data.azurerm_client_config.current.tenant_id
+  tenant_id           = coalesce(var.tenant_id, data.azurerm_client_config.current.tenant_id)
 
   soft_delete_retention_days = var.soft_delete_retention_days
   purge_protection_enabled   = var.purge_protection_enabled

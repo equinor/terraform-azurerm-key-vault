@@ -1,12 +1,5 @@
 mock_provider "azurerm" {}
 
-override_data {
-  target = data.azurerm_client_config.current
-  values = {
-    tenant_id = "90bf3c67-d9ec-4fb2-ade0-1141d5dd5bbf" # Randomly generated
-  }
-}
-
 run "setup_tests" {
   module {
     source = "./tests/setup"
@@ -21,6 +14,7 @@ run "soft_delete_defaults" {
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+    tenant_id                  = run.setup_tests.tenant_id
   }
 
   assert {
@@ -42,6 +36,7 @@ run "soft_delete_retention" {
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+    tenant_id                  = run.setup_tests.tenant_id
 
     soft_delete_retention_days = 7
   }
@@ -60,6 +55,7 @@ run "purge_protection_enabled" {
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+    tenant_id                  = run.setup_tests.tenant_id
 
     purge_protection_enabled = true
   }
@@ -78,6 +74,7 @@ run "purge_protection_disabled" {
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+    tenant_id                  = run.setup_tests.tenant_id
 
     purge_protection_enabled = false
   }

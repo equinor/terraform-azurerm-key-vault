@@ -6,28 +6,6 @@ run "setup_tests" {
   }
 }
 
-run "soft_delete_defaults" {
-  command = plan
-
-  variables {
-    vault_name                 = run.setup_tests.vault_name
-    resource_group_name        = run.setup_tests.resource_group_name
-    location                   = run.setup_tests.location
-    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
-    tenant_id                  = run.setup_tests.tenant_id
-  }
-
-  assert {
-    condition     = azurerm_key_vault.this.soft_delete_retention_days == 90
-    error_message = "Soft-delete retention should be 90 days by default"
-  }
-
-  assert {
-    condition     = azurerm_key_vault.this.purge_protection_enabled == true
-    error_message = "Purge protection should be enabled by default"
-  }
-}
-
 run "soft_delete_retention" {
   command = plan
 

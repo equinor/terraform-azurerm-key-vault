@@ -50,6 +50,37 @@ resource "azurerm_key_vault" "this" {
   }
 }
 
+resource "azurerm_private_endpoint" "this" {
+  for_each = var.private_endpoints
+
+  name                = each.value.name
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  subnet_id           = each.value.subnet_id
+
+  custom_network_interface_name = each.value.custom_network_interface_name
+
+  private_service_connection {
+    name                           = each.value.name
+    private_connection_resource_id = azurerm_key_vault.this.id
+    subresource_names              = ["vault"]
+
+    # The value of "is_manual_connection" should only be set to true if you don't own the target Key Vault.
+    # Since the target Key Vault is created by this module, you own it, and the value should always be set to false.
+    is_manual_connection = false
+  }
+
+  tags = var.tags
+
+  lifecycle {
+    ignore_changes = [
+      # Should be managed by owner of Private DNS zone, usually platform team.
+      # TODO(@hknutsen): Decide if this is the right approach, or if Private DNS zome group should be managed by this module.
+      private_dns_zone_group
+    ]
+  }
+}
+
 resource "azurerm_monitor_diagnostic_setting" "this" {
   name                       = var.diagnostic_setting_name
   target_resource_id         = azurerm_key_vault.this.id

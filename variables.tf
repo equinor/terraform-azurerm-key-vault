@@ -95,6 +95,17 @@ variable "network_acls_virtual_network_subnet_ids" {
   default     = []
 }
 
+variable "private_endpoints" {
+  description = "A map of private endpoints to create for this Key Vault."
+  type = map(object({
+    name                          = string
+    subnet_id                     = string
+    custom_network_interface_name = optional(string)
+  }))
+  nullable = false
+  default  = {}
+}
+
 variable "diagnostic_setting_name" {
   description = "The name of this diagnostic setting."
   type        = string

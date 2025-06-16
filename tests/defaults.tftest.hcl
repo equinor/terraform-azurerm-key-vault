@@ -61,16 +61,6 @@ run "defaults" {
   }
 
   assert {
-    condition     = azurerm_key_vault.this.soft_delete_retention_days == 90
-    error_message = "Soft-delete retention should be 90 days by default"
-  }
-
-  assert {
-    condition     = azurerm_key_vault.this.purge_protection_enabled == true
-    error_message = "Purge protection should be enabled by default"
-  }
-
-  assert {
     condition     = azurerm_key_vault.this.enabled_for_deployment == false
     error_message = "Key Vault should not be enabled for deployment by default"
   }

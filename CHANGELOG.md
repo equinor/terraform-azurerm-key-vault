@@ -1,5 +1,17 @@
 # Changelog
 
+## [11.8.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.7.0...v11.8.0) (2025-06-12)
+
+
+### Features
+
+* add variable `tenant_id` ([#109](https://github.com/equinor/terraform-azurerm-key-vault/issues/109)) ([318c4a7](https://github.com/equinor/terraform-azurerm-key-vault/commit/318c4a7d4dc0abf97c244c6e3d2da146604a7b2f))
+
+
+### Bug Fixes
+
+* argument `metric` for resource `azurerm_monitor_diagnostic_setting` has been deprecated ([#108](https://github.com/equinor/terraform-azurerm-key-vault/issues/108)) ([414ab77](https://github.com/equinor/terraform-azurerm-key-vault/commit/414ab7722132a1fc238eb3b7fa15bb8c0fa83bf3))
+
 ## [11.7.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.3...v11.7.0) (2025-05-28)
 
 

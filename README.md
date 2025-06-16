@@ -29,7 +29,7 @@ provider "azurerm" {
 
 module "key_vault" {
   source  = "equinor/key-vault/azurerm"
-  version = "~> 11.7"
+  version = "~> 11.8"
 
   vault_name                 = "example-vault"
   resource_group_name        = azurerm_resource_group.example.name

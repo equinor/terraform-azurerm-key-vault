@@ -6,7 +6,7 @@ run "setup_tests" {
   }
 }
 
-run "defaults" {
+run "basic_defaults" {
   command = plan
 
   variables {

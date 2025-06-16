@@ -24,7 +24,7 @@ run "setup_tests" {
   }
 }
 
-run "default_values" {
+run "defaults" {
   command = plan
 
   variables {

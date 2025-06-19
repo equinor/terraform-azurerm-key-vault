@@ -1,5 +1,4 @@
 mock_provider "azurerm" {
-
   # Override values that are not known until after the plan is applied.
   override_during = plan
 

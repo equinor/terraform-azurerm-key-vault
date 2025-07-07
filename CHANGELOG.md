@@ -1,5 +1,38 @@
 # Changelog
 
+## [11.8.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.7.0...v11.8.0) (2025-06-12)
+
+
+### Features
+
+* add variable `tenant_id` ([#109](https://github.com/equinor/terraform-azurerm-key-vault/issues/109)) ([318c4a7](https://github.com/equinor/terraform-azurerm-key-vault/commit/318c4a7d4dc0abf97c244c6e3d2da146604a7b2f))
+
+
+### Bug Fixes
+
+* argument `metric` for resource `azurerm_monitor_diagnostic_setting` has been deprecated ([#108](https://github.com/equinor/terraform-azurerm-key-vault/issues/108)) ([414ab77](https://github.com/equinor/terraform-azurerm-key-vault/commit/414ab7722132a1fc238eb3b7fa15bb8c0fa83bf3))
+
+## [11.7.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.3...v11.7.0) (2025-05-28)
+
+
+### Features
+
+* enable purge protection by default ([#104](https://github.com/equinor/terraform-azurerm-key-vault/issues/104)) ([7b29d23](https://github.com/equinor/terraform-azurerm-key-vault/commit/7b29d23c4d175634a37f7181bfcb8df664f20c74))
+
+## [11.6.3](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.2...v11.6.3) (2025-04-23)
+
+
+### Documentation
+
+* update README header ([517d5d6](https://github.com/equinor/terraform-azurerm-key-vault/commit/517d5d63f788465f840c57ac6be6af368fd2899f))
+
+## [11.6.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.1...v11.6.2) (2025-04-22)
+
+
+### Documentation
+
+* update README ([1f7630b](https://github.com/equinor/terraform-azurerm-key-vault/commit/1f7630b61122dc8ce5e574c2402e2c192bfab0ac))
+
 ## [11.6.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.6.0...v11.6.1) (2024-11-26)
 
 

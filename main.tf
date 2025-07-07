@@ -1,7 +1,9 @@
 locals {
+  tenant_id = coalesce(var.tenant_id, data.azurerm_client_config.current.tenant_id)
+
   access_policies = [
     for p in var.access_policies : {
-      tenant_id               = data.azurerm_client_config.current.tenant_id
+      tenant_id               = local.tenant_id
       application_id          = ""
       object_id               = p.object_id
       secret_permissions      = p.secret_permissions
@@ -10,8 +12,6 @@ locals {
       storage_permissions     = []
     }
   ]
-
-  diagnostic_setting_metric_categories = ["AllMetrics"]
 }
 
 data "azurerm_client_config" "current" {}
@@ -21,7 +21,7 @@ resource "azurerm_key_vault" "this" {
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "standard"
-  tenant_id           = data.azurerm_client_config.current.tenant_id
+  tenant_id           = local.tenant_id
 
   soft_delete_retention_days = var.soft_delete_retention_days
   purge_protection_enabled   = var.purge_protection_enabled
@@ -67,13 +67,11 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     }
   }
 
-  dynamic "metric" {
-    for_each = toset(concat(local.diagnostic_setting_metric_categories, var.diagnostic_setting_enabled_metric_categories))
+  dynamic "enabled_metric" {
+    for_each = toset(var.diagnostic_setting_enabled_metric_categories)
 
     content {
-      # Azure expects explicit configuration of both enabled and disabled metric categories.
-      category = metric.value
-      enabled  = contains(var.diagnostic_setting_enabled_metric_categories, metric.value)
+      category = enabled_metric.value
     }
   }
 }

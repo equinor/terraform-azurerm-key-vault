@@ -1,20 +1,18 @@
-# Ref: https://learn.microsoft.com/en-us/azure/key-vault/general/alert#example-log-query-alert-for-near-expiry-certificates (2024-08-27)
-
-# TODO: create "Certificate Near Expirt Alert"
+# Ref: https://learn.microsoft.com/en-us/azure/key-vault/general/alert#example-log-query-alert-for-near-expiry-certificates (2025-07-08)
 
 resource "azurerm_monitor_scheduled_query_rules_alert_v2" "secret_near_expiry" {
-  name                = "Secret Near Expiry Alert"
+  name                = var.secret_near_expiry_alert_rule_name
   resource_group_name = var.resource_group_name
   location            = var.location
   scopes              = var.vault_ids
 
   criteria {
     query = <<-QUERY
-    AzureDiagnostics
-      | where OperationName == "SecretNearExpiryEventGridNotification"
-      | extend SecretExpire = unixtime_seconds_todatetime(eventGridEventProperties_data_EXP_d)
-      | extend DaysTillExpire = datetime_diff("Day", SecretExpire, now())
-      | project ResourceId, SecretName = eventGridEventProperties_subject_s, DaysTillExpire, SecretExpire
+      AzureDiagnostics
+        | where OperationName == "SecretNearExpiryEventGridNotification"
+        | extend SecretExpire = unixtime_seconds_todatetime(eventGridEventProperties_data_EXP_d)
+        | extend DaysTillExpire = datetime_diff("Day", SecretExpire, now())
+        | project ResourceId, SecretName = eventGridEventProperties_subject_s, DaysTillExpire, SecretExpire
     QUERY
 
     time_aggregation_method = "Count" # TODO: aggregation granularity?
@@ -52,5 +50,3 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "secret_near_expiry" {
 
   tags = var.tags
 }
-
-# TODO: create "Key Near Expirt Alert"

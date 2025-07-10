@@ -7,10 +7,10 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "secret_near_expiry" {
   criteria {
     query = <<-QUERY
       AzureDiagnostics
-        | where OperationName == "SecretNearExpiryEventGridNotification"
-        | extend SecretExpiryDatetime = unixtime_seconds_todatetime(eventGridEventProperties_data_EXP_d)
-        | extend SecretExpiryDays = datetime_diff("Day", SecretExpiryDatetime, now())
-        | project ResourceId, SecretName = eventGridEventProperties_subject_s, SecretExpiryDatetime, SecretExpiryDays
+      | where OperationName == "SecretNearExpiryEventGridNotification"
+      | extend SecretExpiryDatetime = unixtime_seconds_todatetime(eventGridEventProperties_data_EXP_d)
+      | extend SecretExpiryDays = datetime_diff("Day", SecretExpiryDatetime, now())
+      | project ResourceId, SecretName = eventGridEventProperties_subject_s, SecretExpiryDatetime, SecretExpiryDays
     QUERY
 
     time_aggregation_method = "Count"

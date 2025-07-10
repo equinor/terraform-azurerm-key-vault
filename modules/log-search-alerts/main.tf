@@ -18,7 +18,7 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "secret_near_expiry" {
     operator                = "GreaterThan"
     threshold               = 0
 
-    # Unique combinations of SecretName + SecretExpiryDays should trigger separate alerts
+    # Unique combinations of SecretName + SecretExpiryDays should trigger separate alerts.
     dimension {
       name     = "SecretName"
       operator = "Include"
@@ -31,13 +31,13 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "secret_near_expiry" {
     }
   }
 
-  # Configure alert to run once per day, and evaluate logs from the entire previous day
+  # Configure alert to run once per day, and evaluate logs from the entire previous day.
   evaluation_frequency = "P1D"
   window_duration      = "P1D"
 
   severity = 2 # Warning
 
-  # Query validation fails during creation if no logs exist yet
+  # Query validation fails during creation if no logs exist yet.
   skip_query_validation = true
 
   action {

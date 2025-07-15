@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.10.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.9.0...v11.10.0) (2025-07-15)
+
+
+### Features
+
+* **log-search-alerts:** create certificate near expiry alerts ([#115](https://github.com/equinor/terraform-azurerm-key-vault/issues/115)) ([10786b9](https://github.com/equinor/terraform-azurerm-key-vault/commit/10786b9b59bd5cac5830b775f2448f4bd95d0816))
+
 ## [11.9.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.8.0...v11.9.0) (2025-07-14)
 
 

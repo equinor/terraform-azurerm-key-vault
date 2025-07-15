@@ -1,4 +1,4 @@
-# Log search alerts submodule
+# Submodule for log search alerts
 
 Terraform submodule which creates log search alert rules for Azure Key Vault.
 

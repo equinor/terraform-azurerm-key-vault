@@ -11,7 +11,7 @@ Terraform submodule which creates Azure Key Vault log search alert resources.
 
 - Azure role `Contributor` at the resource group scope.
 - Azure role `Monitoring Contributor` at the action group scope.
-- Log category `AuditEvent` enabled for the Key Vault to monitor (enabled by default if the Key Vault was created using the root module).
+- Log category `AuditEvent` enabled for the Key Vault to be monitored (enabled by default if the Key Vault was created using the root module).
 
 ## Usage
 

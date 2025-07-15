@@ -1,6 +1,6 @@
 # Submodule for log search alerts
 
-Terraform submodule which creates Azure Key Vault log search alert rule resources.
+Terraform submodule which creates Azure Key Vault log search alert resources.
 
 ## Features
 

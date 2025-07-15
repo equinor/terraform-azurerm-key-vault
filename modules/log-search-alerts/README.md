@@ -1,16 +1,17 @@
-# Log search alerts submodule
+# Submodule for log search alerts
 
-Terraform submodule which creates log search alert rules for Azure Key Vault.
+Terraform submodule which creates Azure Key Vault log search alert resources.
 
 ## Features
 
 - Secret near expiry alerts sent to given action group.
+- Certificate near expiry alerts sent to given action group.
 
 ## Prerequisites
 
 - Azure role `Contributor` at the resource group scope.
 - Azure role `Monitoring Contributor` at the action group scope.
-- Log category `AuditEvent` enabled for the Key Vault(s) to monitor (enabled by default in the root module).
+- Log category `AuditEvent` enabled for the Key Vault to monitor (enabled by default if the Key Vault was created using the root module).
 
 ## Usage
 

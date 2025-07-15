@@ -24,6 +24,12 @@ variable "secret_near_expiry_alert_rule_name" {
   default     = "Secret Near Expiry Alert"
 }
 
+variable "certificate_near_expiry_alert_rule_name" {
+  description = "The name of this Certificate Near Expiry alert rule."
+  type        = string
+  default     = "Certificate Near Expiry Alert"
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

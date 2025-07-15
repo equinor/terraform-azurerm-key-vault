@@ -20,7 +20,6 @@ Terraform submodule which creates Azure Key Vault log search alert resources.
 ```terraform
 module "key_vault_log_search_alerts" {
   source  = "equinor/key-vault/azurerm//modules/log-search-alerts"
-  version = "11.9.0"
 
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location

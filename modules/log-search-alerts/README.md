@@ -6,6 +6,7 @@ Terraform submodule which creates Azure Key Vault log search alert resources.
 
 Log search alerts sent to given action group:
 
+- Key near expiry
 - Secret near expiry
 - Certificate near expiry
 

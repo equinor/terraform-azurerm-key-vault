@@ -18,6 +18,12 @@ variable "action_group_ids" {
   type        = list(string)
 }
 
+variable "key_near_expiry_alert_rule_name" {
+  description = "The name of this Key Near Expiry alert rule."
+  type        = string
+  default     = "Key Near Expiry Alert"
+}
+
 variable "secret_near_expiry_alert_rule_name" {
   description = "The name of this Secret Near Expiry alert rule."
   type        = string

@@ -80,7 +80,7 @@ run "create_metric_alerts" {
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
     tenant_id                  = run.setup_tests.tenant_id
 
-    action_group_ids = [run.setup_tests.action_group_id]
+    action_group_ids = run.setup_tests.action_group_ids
   }
 
   assert {
@@ -100,5 +100,12 @@ run "create_metric_alerts" {
       for metric_alert in azurerm_monitor_metric_alert.this : metric_alert.scopes == toset([azurerm_key_vault.this.id])
     ])
     error_message = "Metric alerts should be scoped to the Key Vault resource"
+  }
+
+  assert {
+    condition = alltrue([
+      for metric_alert in azurerm_monitor_metric_alert.this : toset(metric_alert.action[*].action_group_id) == toset(run.setup_tests.action_group_ids)
+    ])
+    error_message = "Metric alerts should use the action group IDs provided in the setup test"
   }
 }

@@ -14,9 +14,10 @@ locals {
   ]
 
   metric_alerts = {
-    "reduced_availability" = {
-      name        = "Reduced Availability"
-      description = ""
+    # Ref: https://azure.github.io/azure-monitor-baseline-alerts/services/KeyVault/vaults/#availability
+    "availability" = {
+      name        = "Availability"
+      description = "Vault requests availability"
       metric_name = "Availability"
       aggregation = "Average"
       operator    = "LessThan"

@@ -4,7 +4,7 @@ locals {
   resource_group_name = local.parsed_vault_id["resource_group_name"]
 }
 
-resource "azurerm_monitor_metric_alert" "reduced_availabilty" {
+resource "azurerm_monitor_metric_alert" "reduced_availability" {
   name                = "Reduced availability - ${local.vault_name}"
   resource_group_name = local.resource_group_name
   scopes              = [var.vault_id]
@@ -22,8 +22,12 @@ resource "azurerm_monitor_metric_alert" "reduced_availabilty" {
 
   severity = 1 # Error
 
-  action {
-    action_group_id = var.action_group_id
+  dynamic "action" {
+    for_each = var.action_group_ids
+
+    content {
+      action_group_id = action.value
+    }
   }
 
   tags = var.tags

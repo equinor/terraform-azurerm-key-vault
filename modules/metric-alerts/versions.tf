@@ -1,4 +1,5 @@
 terraform {
+  # Version 1.8.0 is required to use the "provider::azurerm::parse_resource_id" function.
   required_version = ">= 1.8.0"
 
   required_providers {

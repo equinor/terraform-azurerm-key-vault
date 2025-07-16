@@ -75,3 +75,13 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
     }
   }
 }
+
+module "metric_alerts" {
+  source = "./modules/metric-alerts"
+  count  = length(var.action_group_ids) > 0 ? 1 : 0
+
+  vault_id         = azurerm_key_vault.this.id
+  action_group_ids = var.action_group_ids
+
+  tags = var.tags
+}

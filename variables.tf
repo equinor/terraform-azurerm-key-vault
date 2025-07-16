@@ -125,9 +125,10 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
-variable "action_group_id" {
-  description = "The ID of the action group to send alerts to."
-  type        = string
+variable "action_group_ids" {
+  description = "A list of IDs of action groups to send alerts to."
+  type        = list(string)
+  default     = []
 }
 
 variable "tags" {

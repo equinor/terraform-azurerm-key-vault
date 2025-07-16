@@ -4,15 +4,17 @@ Terraform submodule which creates Azure Key Vault log search alert resources.
 
 ## Features
 
-- Key near expiry alerts sent to given action group.
-- Secret near expiry alerts sent to given action group.
-- Certificate near expiry alerts sent to given action group.
+Log search alerts sent to given action group:
+
+- Key near expiry
+- Secret near expiry
+- Certificate near expiry
 
 ## Prerequisites
 
-- Azure role `Contributor` at the resource group scope.
-- Azure role `Monitoring Contributor` at the action group scope.
-- Log category `AuditEvent` enabled for the Key Vault to be monitored (enabled by default if the Key Vault was created using the root module).
+- Azure role `Contributor` at the resource group scope
+- Azure role `Monitoring Contributor` at the action group scope
+- Log category `AuditEvent` enabled for the Key Vault to be monitored (enabled by default if the Key Vault was created using the root module)
 
 ## Usage
 

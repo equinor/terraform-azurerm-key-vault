@@ -63,4 +63,42 @@ run "monitoring_defaults" {
     condition     = length(azurerm_monitor_diagnostic_setting.this.enabled_metric) == 0
     error_message = "Diagnostic setting should not have any enabled metric categories by default"
   }
+
+  assert {
+    condition     = length(azurerm_monitor_metric_alert.this) == 0
+    error_message = "No metric alerts should be created by default"
+  }
+}
+
+run "create_metric_alerts" {
+  command = plan
+
+  variables {
+    vault_name                 = run.setup_tests.vault_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+    tenant_id                  = run.setup_tests.tenant_id
+
+    action_group_ids = [run.setup_tests.action_group_id]
+  }
+
+  assert {
+    condition     = length(azurerm_monitor_metric_alert.this) == 1
+    error_message = "One metric alert should be created when action group IDs are provided"
+  }
+
+  assert {
+    condition = alltrue([
+      for metric_alert in azurerm_monitor_metric_alert.this : metric_alert.criteria[0].metric_namespace == "Microsoft.KeyVault/vaults"
+    ])
+    error_message = "Metric alerts should use the correct metric namespace for Key Vault"
+  }
+
+  assert {
+    condition = alltrue([
+      for metric_alert in azurerm_monitor_metric_alert.this : metric_alert.scopes == toset([azurerm_key_vault.this.id])
+    ])
+    error_message = "Metric alerts should be scoped to the Key Vault resource"
+  }
 }

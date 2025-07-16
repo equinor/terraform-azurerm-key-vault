@@ -12,6 +12,20 @@ locals {
       storage_permissions     = []
     }
   ]
+
+  metric_alerts = {
+    "reduced_availability" = {
+      name        = "Reduced Availability"
+      description = ""
+      metric_name = "Availability"
+      aggregation = "Average"
+      operator    = "LessThan"
+      threshold   = 100
+      frequency   = "PT1M"
+      window_size = "PT5M"
+      severity    = 1 # Error
+    }
+  }
 }
 
 data "azurerm_client_config" "current" {}
@@ -76,12 +90,33 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
   }
 }
 
-module "metric_alerts" {
-  source = "./modules/metric-alerts"
-  count  = length(var.action_group_ids) > 0 ? 1 : 0
+resource "azurerm_monitor_metric_alert" "this" {
+  for_each = length(var.action_group_ids) > 0 ? local.metric_alerts : {}
 
-  vault_id         = azurerm_key_vault.this.id
-  action_group_ids = var.action_group_ids
+  name                = "${each.value.name} - ${azurerm_key_vault.this.id}"
+  resource_group_name = var.resource_group_name
+  scopes              = [azurerm_key_vault.this.id]
+  description         = each.value.description
+
+  criteria {
+    metric_namespace = "Microsoft.KeyVault/vaults"
+    metric_name      = each.value.metric_name
+    aggregation      = each.value.aggregation
+    operator         = each.value.operator
+    threshold        = each.value.threshold
+  }
+
+  frequency   = each.value.frequency
+  window_size = each.value.window_size
+  severity    = each.value.severity
+
+  dynamic "action" {
+    for_each = var.action_group_ids
+
+    content {
+      action_group_id = action.value
+    }
+  }
 
   tags = var.tags
 }

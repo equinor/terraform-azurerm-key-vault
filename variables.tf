@@ -126,8 +126,9 @@ variable "log_analytics_workspace_id" {
 }
 
 variable "action_group_ids" {
-  description = "A list of IDs of action groups to send alerts to."
+  description = "A list of IDs of action groups to send alerts to. If list is empty, no metric alert rules will be created."
   type        = list(string)
+  nullable    = false
   default     = []
 }
 

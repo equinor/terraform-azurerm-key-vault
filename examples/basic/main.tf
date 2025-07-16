@@ -32,7 +32,7 @@ module "key_vault" {
   resource_group_name        = var.resource_group_name
   location                   = var.location
   log_analytics_workspace_id = module.log_analytics.workspace_id
-  action_group_id            = azurerm_monitor_action_group.this.id
+  action_group_ids           = [azurerm_monitor_action_group.this.id]
 }
 
 # Give current client full access to Key Vault secrets

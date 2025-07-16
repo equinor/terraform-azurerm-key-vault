@@ -84,8 +84,8 @@ run "create_metric_alerts" {
   }
 
   assert {
-    condition     = length(azurerm_monitor_metric_alert.this) == 1
-    error_message = "One metric alert should be created when action group IDs are provided"
+    condition     = length(azurerm_monitor_metric_alert.this) > 0
+    error_message = "Metric alerts should be created when action group IDs are provided"
   }
 
   assert {

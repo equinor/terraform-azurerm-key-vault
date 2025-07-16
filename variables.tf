@@ -13,6 +13,13 @@ variable "location" {
   type        = string
 }
 
+variable "tenant_id" {
+  description = "The ID of the Microsoft Entra tenant that should be used for authenticating requests to this Key Vault. If value is set to null, the ID of the current tenant will be used."
+  type        = string
+  nullable    = true
+  default     = null
+}
+
 variable "soft_delete_retention_days" {
   description = "The number of days that items should be retained for once soft-deleted."
   type        = number
@@ -22,7 +29,7 @@ variable "soft_delete_retention_days" {
 variable "purge_protection_enabled" {
   description = "Is purge protection enabled for this Key Vault?"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "enabled_for_deployment" {

@@ -1,61 +1,82 @@
-# Azure Key Vault Terraform module
+# Terraform module for Azure Key Vault
 
-[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-key-vault/badge)](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-key-vault/badge)
-[![Equinor Terraform Baseline](https://img.shields.io/badge/Equinor%20Terraform%20Baseline-1.0.0-blueviolet)](https://github.com/equinor/terraform-baseline)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/releases/latest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-key-vault/badge)](https://developer.equinor.com/governance/scm-policy/)
 
-Terraform module which creates an Azure Key Vault.
+Terraform module which creates Azure Key Vault resources.
 
 ## Features
 
 - Soft-delete retention set to 90 days by default.
-- Purge protection disabled by default.
+- Purge protection enabled by default (see [notes](#purge-protection)).
 - Role-based access control (RBAC) authorization enabled by default.
 - Public network access denied by default.
 - Audit logs sent to given Log Analytics workspace by default.
 - Metric alerts sent to given action group by default:
   - Reduced availability
 
-## Development
+## Prerequisites
 
-1. Read [this document](https://code.visualstudio.com/docs/devcontainers/containers).
+- Azure role `Contributor` at the resource group scope.
+- Azure role `Log Analytics Contributor` at the Log Analytics workspace scope.
 
-1. Clone this repository.
+## Usage
 
-1. Configure Terraform variables in a file `.devcontainer/devcontainer.env`:
+```terraform
+provider "azurerm" {
+  features {}
+}
 
-    ```env
-    TF_VAR_resource_group_name=
-    TF_VAR_location=
-    ```
+module "key_vault" {
+  source  = "equinor/key-vault/azurerm"
+  version = "~> 11.11"
 
-1. Open repository in dev container.
+  vault_name                 = "example-vault"
+  resource_group_name        = azurerm_resource_group.example.name
+  location                   = azurerm_resource_group.example.location
+  log_analytics_workspace_id = module.log_analytics.workspace_id
+
+  network_acls_ip_rules = ["1.1.1.1/32", "2.2.2.2/32", "3.3.3.3/30"]
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "westeurope"
+}
+
+module "log_analytics" {
+  source  = "equinor/log-analytics/azurerm"
+  version = "~> 2.0"
+
+  workspace_name      = "example-workspace"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+}
+```
+
+## Notes
+
+### Purge protection
+
+Purge protection is enabled by default to protect against malicious or accidental deletion of secrets, as recommended in [Azure Key Vault best practices](https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices#turn-on-data-protection-for-your-vault). Once purge protection has been enabled, it can't be disabled.
 
 ## Testing
 
-1. Change to the test directory:
+1. Initialize working directory:
 
-    ```console
-    cd test
+    ```bash
+    terraform init
     ```
 
-1. Login to Azure:
+1. Execute tests:
 
-    ```console
-    az login
+    ```bash
+    terraform test
     ```
 
-1. Set active subscription:
-
-    ```console
-    az account set -s <SUBSCRIPTION_NAME_OR_ID>
-    ```
-
-1. Run tests:
-
-    ```console
-    go test -timeout 60m
-    ```
+    See [`terraform test` command documentation](https://developer.hashicorp.com/terraform/cli/commands/test) for options.
 
 ## Contributing
 

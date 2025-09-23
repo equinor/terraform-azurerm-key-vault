@@ -1,5 +1,12 @@
 # Terraform module for Azure Key Vault
 
+[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/releases/latest)
+[![Terraform Module Downloads](https://img.shields.io/terraform/module/dt/equinor/key-vault/azurerm)](https://registry.terraform.io/modules/equinor/key-vault/azurerm/latest)
+[![GitHub contributors](https://img.shields.io/github/contributors/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/graphs/contributors)
+[![GitHub Issues](https://img.shields.io/github/issues/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/issues)
+[![GitHub Pull requests](https://img.shields.io/github/issues-pr/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/pulls)
+[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/blob/main/LICENSE)
+
 Terraform module which creates Azure Key Vault resources.
 
 ## Features

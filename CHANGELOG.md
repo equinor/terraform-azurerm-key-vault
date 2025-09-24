@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.11.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.0...v11.11.1) (2025-09-24)
+
+
+### Documentation
+
+* update badges ([2a1aee4](https://github.com/equinor/terraform-azurerm-key-vault/commit/2a1aee431c14634fda5049508cd0ea16a66fbe60))
+
 ## [11.11.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.10.0...v11.11.0) (2025-07-16)
 
 

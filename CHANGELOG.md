@@ -1,5 +1,33 @@
 # Changelog
 
+## [11.11.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.0...v11.11.1) (2025-09-24)
+
+
+### Documentation
+
+* update badges ([2a1aee4](https://github.com/equinor/terraform-azurerm-key-vault/commit/2a1aee431c14634fda5049508cd0ea16a66fbe60))
+
+## [11.11.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.10.0...v11.11.0) (2025-07-16)
+
+
+### Features
+
+* **log-search-alert:** create key near expiry alert rule ([#117](https://github.com/equinor/terraform-azurerm-key-vault/issues/117)) ([a20dfd0](https://github.com/equinor/terraform-azurerm-key-vault/commit/a20dfd0cc169f3de92c020d82fa4e620c9182771))
+
+## [11.10.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.9.0...v11.10.0) (2025-07-15)
+
+
+### Features
+
+* **log-search-alerts:** create certificate near expiry alerts ([#115](https://github.com/equinor/terraform-azurerm-key-vault/issues/115)) ([10786b9](https://github.com/equinor/terraform-azurerm-key-vault/commit/10786b9b59bd5cac5830b775f2448f4bd95d0816))
+
+## [11.9.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.8.0...v11.9.0) (2025-07-14)
+
+
+### Features
+
+* create secret near expiry alerts ([#113](https://github.com/equinor/terraform-azurerm-key-vault/issues/113)) ([5abba4f](https://github.com/equinor/terraform-azurerm-key-vault/commit/5abba4f9e0a65bd5ab6d4faa61cebbd93da9ae56))
+
 ## [11.8.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.7.0...v11.8.0) (2025-06-12)
 
 

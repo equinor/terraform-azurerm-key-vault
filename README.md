@@ -1,10 +1,5 @@
 # Terraform module for Azure Key Vault
 
-[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/blob/main/LICENSE)
-[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-key-vault)](https://github.com/equinor/terraform-azurerm-key-vault/releases/latest)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
-[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-key-vault/badge)](https://developer.equinor.com/governance/scm-policy/)
-
 Terraform module which creates Azure Key Vault resources.
 
 ## Features
@@ -29,7 +24,7 @@ provider "azurerm" {
 
 module "key_vault" {
   source  = "equinor/key-vault/azurerm"
-  version = "~> 11.8"
+  version = "~> 11.11"
 
   vault_name                 = "example-vault"
   resource_group_name        = azurerm_resource_group.example.name

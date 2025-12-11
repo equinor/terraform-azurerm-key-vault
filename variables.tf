@@ -108,6 +108,10 @@ variable "private_endpoints" {
     name                          = string
     subnet_id                     = string
     custom_network_interface_name = optional(string)
+    private_dns_zone_groups = optional(list(object({
+      name                 = string
+      private_dns_zone_ids = list(string)
+    })), [])
   }))
   nullable = false
   default  = {}

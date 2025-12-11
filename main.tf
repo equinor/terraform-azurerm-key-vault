@@ -70,15 +70,16 @@ resource "azurerm_private_endpoint" "this" {
     is_manual_connection = false
   }
 
-  tags = var.tags
+  dynamic "private_dns_zone_group" {
+    for_each = each.value.private_dns_zone_groups
 
-  lifecycle {
-    ignore_changes = [
-      # Should be managed by owner of Private DNS zone, usually platform team.
-      # TODO(@hknutsen): Decide if this is the right approach, or if Private DNS zome group should be managed by this module.
-      private_dns_zone_group
-    ]
+    content {
+      name                 = private_dns_zone_group.value.name
+      private_dns_zone_ids = private_dns_zone_group.value.private_dns_zone_ids
+    }
   }
+
+  tags = var.tags
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {

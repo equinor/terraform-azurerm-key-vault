@@ -61,7 +61,7 @@ variable "access_policies" {
   default = []
 }
 
-variable "enable_rbac_authorization" {
+variable "rbac_authorization_enabled" {
   description = "Should RBAC authorization be enabled for this Key Vault?"
   type        = bool
   default     = true

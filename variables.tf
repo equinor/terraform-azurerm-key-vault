@@ -125,6 +125,13 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
+variable "action_group_ids" {
+  description = "A list of IDs of action groups to send alerts to. If list is empty, no metric alert rules will be created."
+  type        = list(string)
+  nullable    = false
+  default     = []
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

@@ -240,7 +240,7 @@ run "rbac_authorization_enabled_false" {
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
     tenant_id                  = run.setup_tests.tenant_id
 
-    enable_rbac_authorization = false
+    rbac_authorization_enabled = false
   }
 
   assert {

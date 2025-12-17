@@ -38,7 +38,7 @@ run "authorization_defaults" {
   }
 
   assert {
-    condition     = azurerm_key_vault.this.enable_rbac_authorization == true
+    condition     = azurerm_key_vault.this.rbac_authorization_enabled == true
     error_message = "RBAC authorization should be enabled by default"
   }
 }
@@ -225,7 +225,7 @@ run "enable_rbac_authorization_true" {
   }
 
   assert {
-    condition     = azurerm_key_vault.this.enable_rbac_authorization == true
+    condition     = azurerm_key_vault.this.rbac_authorization_enabled == true
     error_message = "RBAC authorization should be enabled"
   }
 }
@@ -244,7 +244,7 @@ run "enable_rbac_authorization_false" {
   }
 
   assert {
-    condition     = azurerm_key_vault.this.enable_rbac_authorization == false
+    condition     = azurerm_key_vault.this.rbac_authorization_enabled == false
     error_message = "RBAC authorization should not be enabled"
   }
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.11.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.1...v11.11.2) (2025-12-17)
+
+
+### Bug Fixes
+
+* replace deprecated argument enable_rbac_authorization ([#123](https://github.com/equinor/terraform-azurerm-key-vault/issues/123)) ([bd5843d](https://github.com/equinor/terraform-azurerm-key-vault/commit/bd5843d1feb934cee5e0ea170199f249f3814d44))
+
 ## [11.11.1](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.0...v11.11.1) (2025-09-24)
 
 

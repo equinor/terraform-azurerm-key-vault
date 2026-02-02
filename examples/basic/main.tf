@@ -18,6 +18,12 @@ module "log_analytics" {
   location            = var.location
 }
 
+resource "azurerm_monitor_action_group" "this" {
+  name                = "ag-${random_id.this.hex}"
+  resource_group_name = var.resource_group_name
+  short_name          = "Action"
+}
+
 module "key_vault" {
   # source = "github.com/equinor/terraform-azurerm-key-vault"
   source = "../.."
@@ -26,6 +32,7 @@ module "key_vault" {
   resource_group_name        = var.resource_group_name
   location                   = var.location
   log_analytics_workspace_id = module.log_analytics.workspace_id
+  action_group_ids           = [azurerm_monitor_action_group.this.id]
 }
 
 # Give current client full access to Key Vault secrets

@@ -12,6 +12,21 @@ locals {
       storage_permissions     = []
     }
   ]
+
+  metric_alerts = {
+    # Ref: https://azure.github.io/azure-monitor-baseline-alerts/services/KeyVault/vaults/#availability
+    "availability" = {
+      name        = "Availability"
+      description = "Vault requests availability"
+      metric_name = "Availability"
+      aggregation = "Average"
+      operator    = "LessThan"
+      threshold   = 100
+      frequency   = "PT1M"
+      window_size = "PT5M"
+      severity    = 1 # Error
+    }
+  }
 }
 
 data "azurerm_client_config" "current" {}
@@ -74,4 +89,35 @@ resource "azurerm_monitor_diagnostic_setting" "this" {
       category = enabled_metric.value
     }
   }
+}
+
+resource "azurerm_monitor_metric_alert" "this" {
+  for_each = length(var.action_group_ids) > 0 ? local.metric_alerts : {}
+
+  name                = "${each.value.name} - ${azurerm_key_vault.this.id}"
+  resource_group_name = var.resource_group_name
+  scopes              = [azurerm_key_vault.this.id]
+  description         = each.value.description
+
+  criteria {
+    metric_namespace = "Microsoft.KeyVault/vaults"
+    metric_name      = each.value.metric_name
+    aggregation      = each.value.aggregation
+    operator         = each.value.operator
+    threshold        = each.value.threshold
+  }
+
+  frequency   = each.value.frequency
+  window_size = each.value.window_size
+  severity    = each.value.severity
+
+  dynamic "action" {
+    for_each = var.action_group_ids
+
+    content {
+      action_group_id = action.value
+    }
+  }
+
+  tags = var.tags
 }

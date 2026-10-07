@@ -24,7 +24,7 @@ provider "azurerm" {
 
 module "key_vault" {
   source  = "equinor/key-vault/azurerm"
-  version = "~> 11.11"
+  version = "~> 11.12"
 
   vault_name                 = "kv-contoso-dev"
   resource_group_name        = azurerm_resource_group.example.name

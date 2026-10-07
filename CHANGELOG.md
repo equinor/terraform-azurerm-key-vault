@@ -1,5 +1,12 @@
 # Changelog
 
+## [11.12.0](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.2...v11.12.0) (2026-10-07)
+
+
+### Features
+
+* create private endpoints ([#121](https://github.com/equinor/terraform-azurerm-key-vault/issues/121)) ([9186196](https://github.com/equinor/terraform-azurerm-key-vault/commit/9186196e1dcd1d5e781e1e5d7434e671b6d2c8ff))
+
 ## [11.11.2](https://github.com/equinor/terraform-azurerm-key-vault/compare/v11.11.1...v11.11.2) (2025-12-17)
 
 
